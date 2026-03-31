@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Governance and Workshops — Terminology — Kieran Forde</title>
+  <title>Engineering Rebuild — Terminology — Kieran Forde</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
@@ -160,6 +160,33 @@
       color: rgba(20,20,20,0.55);
     }
 
+    /* ── DECISION CARDS ── */
+    .decision-stack { display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+    .decision-card {
+      background: #fff; border-radius: 12px; padding: 24px 28px;
+      display: grid; grid-template-columns: auto 1fr; gap: 16px;
+    }
+    .decision-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0; margin-top: 2px;
+    }
+    .decision-icon.rejected { background: rgba(255,72,0,0.1); }
+    .decision-icon.chosen { background: rgba(4,39,41,0.08); }
+    .decision-body {}
+    .decision-title {
+      font-size: 14px; font-weight: 700; color: var(--hs-teal);
+      margin-bottom: 6px;
+    }
+    .decision-title .badge {
+      display: inline-block; font-size: 9px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px;
+      border-radius: 100px; margin-left: 8px; vertical-align: middle;
+    }
+    .badge.rejected { background: rgba(255,72,0,0.1); color: var(--hs-orange); }
+    .badge.chosen { background: rgba(185,205,190,0.4); color: #2a4a2e; }
+    .decision-text { font-size: 13px; line-height: 1.65; color: rgba(20,20,20,0.65); }
+
     /* ── NEEDS INPUT CALLOUT ── */
     .needs-input {
       background: rgba(255,72,0,0.06);
@@ -175,47 +202,27 @@
     .needs-input-text { font-size: 13px; line-height: 1.6; color: rgba(20,20,20,0.7); }
     .needs-input-text strong { color: var(--hs-orange); font-weight: 700; }
 
-    /* ── TIMELINE ── */
-    .timeline { margin: 24px 0; display: flex; flex-direction: column; gap: 0; }
-    .timeline-item {
-      display: grid; grid-template-columns: 100px 1fr;
-      gap: 0 24px; position: relative; padding-bottom: 28px;
-    }
-    .timeline-item:last-child { padding-bottom: 0; }
-    .timeline-item::before {
-      content: ''; position: absolute;
-      left: 100px; top: 8px; bottom: 0;
-      width: 1px; background: rgba(4,39,41,0.12);
-    }
-    .timeline-item:last-child::before { display: none; }
-    .timeline-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--hs-orange); flex-shrink: 0;
-      position: absolute; left: 95px; top: 5px;
-    }
-    .timeline-date {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-      color: rgba(20,20,20,0.4); text-align: right; padding-top: 2px;
-    }
-    .timeline-content { padding-left: 20px; }
-    .timeline-title { font-size: 14px; font-weight: 700; color: var(--hs-teal); margin-bottom: 4px; }
-    .timeline-desc { font-size: 13px; line-height: 1.6; color: rgba(20,20,20,0.6); }
+    /* ── IMAGES ── */
+    .project-image { margin: 28px 0; }
+    .project-image img { width: 100%; border-radius: 12px; border: 1px solid rgba(4,39,41,0.08); display: block; box-shadow: 0 2px 16px rgba(4,39,41,0.07); }
+    .image-caption { font-size: 12px; color: rgba(20,20,20,0.4); margin-top: 8px; line-height: 1.5; font-style: italic; }
 
-    /* ── QUOTE BLOCK ── */
-    .quote-block {
-      border-left: 4px solid var(--hs-orange);
-      padding: 20px 24px; margin: 24px 0;
-      background: #fff; border-radius: 0 12px 12px 0;
+    /* ── LAYER DIAGRAM ── */
+    .layer-diagram { margin: 24px 0; display: flex; flex-direction: column; gap: 10px; }
+    .layer {
+      background: #fff; border-radius: 10px; padding: 18px 22px;
+      display: flex; gap: 16px; align-items: flex-start;
+      border-left: 4px solid var(--layer-color, var(--hs-teal));
     }
-    .quote-text {
-      font-family: var(--font-serif); font-style: italic;
-      font-size: 16px; line-height: 1.6; color: var(--hs-teal);
-      margin-bottom: 10px;
+    .layer-num {
+      font-size: 11px; font-weight: 800; letter-spacing: 0.05em;
+      color: var(--layer-color, var(--hs-teal));
+      background: rgba(4,39,41,0.06); border-radius: 6px;
+      padding: 4px 8px; flex-shrink: 0; margin-top: 1px;
     }
-    .quote-attribution {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: rgba(20,20,20,0.45);
-    }
+    .layer-body {}
+    .layer-name { font-size: 14px; font-weight: 700; color: var(--hs-teal); margin-bottom: 4px; }
+    .layer-desc { font-size: 13px; line-height: 1.6; color: rgba(20,20,20,0.6); }
 
     /* ── FOOTER ── */
     footer {
@@ -244,7 +251,7 @@
       <polygon class="hs-w" points="136.01 201.48 43.79 201.48 43.79 298.62 0 298.62 0 58.93 43.79 58.93 43.79 159.35 136.01 159.35 136.01 58.93 179.79 58.93 179.79 298.62 136.01 298.62 136.01 201.48"/>
       <path class="hs-w" d="M319.91,221.14c0,19.96-16.26,36.21-36.22,36.21s-36.21-16.24-36.21-36.21v-102.66h-41.47v102.66c0,42.83,34.85,77.67,77.68,77.67s77.67-34.84,77.67-77.67v-102.66h-41.45v102.66Z"/>
       <path class="hs-w" d="M627.6,129.05c0-21.05,13.93-27.72,29.18-27.72,12.28,0,28.53,9.35,39.14,20.71l27.19-32.06c-13.59-18.36-41.12-31.05-63.67-31.05-45.12,0-77.63,26.38-77.63,70.13,0,81.14,99.19,55.42,99.19,100.84,0,14.01-13.6,26.37-29.18,26.37-24.55,0-32.52-12.02-43.79-24.71l-30.19,31.38c19.25,23.71,43.13,35.74,71.66,35.74,42.79,0,77.29-26.71,77.29-68.46,0-90.15-99.18-62.1-99.18-101.16Z"/>
-      <path class="hs-w" d="M1241.21,260.33c-24.54,0-31.5-10.61-31.5-26.87v-71.98h38.14v-36.48h-38.14v-48.1l-42.12,18.91v146.62c0,37.49,25.86,56.4,61.34,56.4,5.31,0,12.61-.34,16.6-1.33l10.29-37.81c-4.64.32-9.95.65-14.61.65Z"/>
+      <path class="hs-w" d="M1241.21,260.33c-24-54,0-31.5-10.61-31.5-26.87v-71.98h38.14v-36.48h-38.14v-48.1l-42.12,18.91v146.62c0,37.49,25.86,56.4,61.34,56.4,5.31,0,12.61-.34,16.6-1.33l10.29-37.81c-4.64.32-9.95.65-14.61.65Z"/>
       <path class="hs-w" d="M477.96,119.68c-20.57,0-34.92,5.97-48.79,19.58V60.36h-41.6v146.23c0,54.73,39.57,92.22,84.04,92.22,49.43,0,92.73-38.15,92.73-89.56s-39.93-89.57-86.38-89.57ZM477.7,256.95c-26.06,0-47.18-21.12-47.18-47.18s21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18-21.12,47.18-47.18,47.18Z"/>
       <path class="hs-w" d="M929.59,207.09c0-51.41-43.31-89.56-92.73-89.56-44.46,0-84.04,37.49-84.04,92.22v146.23h41.6v-78.91c13.87,13.61,28.22,19.58,48.79,19.58,46.45,0,86.38-38.81,86.38-89.57ZM890.13,206.58c0,26.06-21.12,47.18-47.18,47.18s-47.18-21.12-47.18-47.18,21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18Z"/>
       <path class="hs-w" d="M1064.01,115.52v-41.79c10.91-5.15,18.55-16.19,18.55-28.99v-.97c0-17.67-14.46-32.13-32.13-32.13h-.96c-17.67,0-32.13,14.46-32.13,32.13v.97c0,12.81,7.64,23.84,18.55,28.99v41.79c-16.24,2.51-31.08,9.21-43.32,19.06l-114.73-89.25c.75-2.91,1.28-5.9,1.29-9.04C879.14,16.27,862.94.03,842.92,0c-20.02-.03-36.26,16.18-36.29,36.2-.02,20.02,16.18,36.26,36.2,36.29,6.52,0,12.56-1.84,17.85-4.85l112.86,87.79c-9.6,14.49-15.22,31.84-15.22,50.52s6.18,37.65,16.62,52.53l-34.32,34.32c-2.71-.81-5.53-1.38-8.51-1.38-16.45,0-29.78,13.33-29.78,29.78s13.34,29.78,29.78,29.78,29.78-13.33,29.78-29.78c0-2.98-.57-5.8-1.38-8.51l33.95-33.95c15.41,11.76,34.6,18.83,55.49,18.83,50.6,0,91.62-41.02,91.62-91.62,0-45.81-33.65-83.65-77.56-90.43ZM1049.94,252.92c-25.94,0-46.98-21.03-46.98-46.97s21.03-46.97,46.98-46.97,46.97,21.03,46.97,46.97-21.03,46.97-46.97,46.97Z"/>
@@ -259,21 +266,21 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <p class="hero-breadcrumb"><a href="terminology.html" class="breadcrumb-link">Terminology</a> · Strand 1</p>
-    <h1 class="hero-title">Governance and<br>workshops.</h1>
-    <p class="hero-subtitle">Designing the human infrastructure for terminology consistency — a self-serve workshop toolkit for product teams to identify, document, and own their terminology.</p>
+    <p class="hero-breadcrumb"><a href="terminology.html" class="breadcrumb-link">Terminology</a> · Strand 3</p>
+    <h1 class="hero-title">Engineering rebuild on<br>HubSpot infrastructure.</h1>
+    <p class="hero-subtitle">Translating the proof of concept into a deterministic, in-house checker that catches terminology issues directly in the engineering PR workflow.</p>
     <div class="hero-meta-row">
       <div class="meta-item">
         <span class="meta-label">Status</span>
-        <span class="meta-value">Active · 2024–ongoing</span>
+        <span class="meta-value">Active · In engineering build</span>
       </div>
       <div class="meta-item">
-        <span class="meta-label">Pilots run</span>
-        <span class="meta-value">3 teams</span>
+        <span class="meta-label">Timeline</span>
+        <span class="meta-value">2025–2026</span>
       </div>
       <div class="meta-item">
-        <span class="meta-label">Code Orange reports</span>
-        <span class="meta-value">22 across 3 product groups</span>
+        <span class="meta-label">Engineering partners</span>
+        <span class="meta-value">Hemerson, Dakota, Mary</span>
       </div>
     </div>
   </div>
@@ -285,11 +292,9 @@
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <p class="sidebar-label">On this page</p>
-    <a href="#discovery">Discovery</a>
-    <a href="#workshop-design">Workshop design</a>
-    <a href="#scaling">Scaling and buy-in</a>
-    <a href="#code-orange">Code Orange</a>
-    <a href="#outcomes">Outcomes</a>
+    <a href="#architecture">Tool architecture</a>
+    <a href="#decisions">Key decisions</a>
+    <a href="#outcomes">Outcomes so far</a>
     <a href="#next">What's next</a>
   </aside>
 
@@ -299,111 +304,116 @@
     <!-- IMPACT STATS -->
     <div class="stat-row" style="margin-top:0;margin-bottom:56px;">
       <div class="stat-card">
-        <div class="stat-number">27</div>
-        <div class="stat-desc">Terms identified in a single 60-minute session across pilots</div>
+        <div class="stat-number">~77%</div>
+        <div class="stat-desc">Target automation coverage, up from ~47% baseline</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">1,673</div>
-        <div class="stat-desc">Incorrectly used terms identified during Code Orange</div>
+        <div class="stat-number">+30pp</div>
+        <div class="stat-desc">Projected increase in automated terminology coverage</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">22</div>
-        <div class="stat-desc">Targeted reports sent to DRIs across three product groups</div>
+        <div class="stat-number">3</div>
+        <div class="stat-desc">Engineering partners scoped in: Hemerson, Dakota, Mary</div>
       </div>
     </div>
 
     <hr class="divider">
 
-    <!-- DISCOVERY -->
-    <section class="section" id="discovery">
-      <p class="section-eyebrow">Discovery</p>
-      <h2 class="section-title">Understanding why term documentation wasn't happening.</h2>
+    <!-- ARCHITECTURE -->
+    <section class="section" id="architecture">
+      <p class="section-eyebrow">Tool architecture</p>
+      <h2 class="section-title">Three layers of capability.</h2>
       <div class="prose">
-        <p>The terminology problem wasn't just about missing documentation — it was about why teams weren't producing it. I ran discovery interviews with 8 people across 6 product lines to understand the barriers.</p>
-        <p>What emerged: teams wanted to document their terminology but had no lightweight process for doing so. The existing approach required too much individual effort, produced inconsistent outputs, and had no clear home in the product team workflow. The process relied on content designers being proactively in the right conversations at the right time — which, at HubSpot's scale, was impossible to sustain.</p>
-        <p>The insight that shaped the governance design: teams needed a structured, time-boxed activity they could run themselves, with a clear output format that matched how Writer's term database expected information.</p>
+        <p>The in-house checker is designed around three layers of capability. Each layer has to work before the next one is useful — which also gave us a natural sequencing for engineering scoping conversations.</p>
       </div>
-    </section>
 
-    <hr class="divider">
-
-    <!-- WORKSHOP DESIGN -->
-    <section class="section" id="workshop-design">
-      <p class="section-eyebrow">Workshop design</p>
-      <h2 class="section-title">A self-serve toolkit teams could run without a content designer.</h2>
-      <div class="prose">
-        <p>I designed a self-serve terminology workshop — a structured 60-minute session that walked product teams through identifying, defining, and preparing terms for documentation. The toolkit included a facilitation guide, a term capture template, and guidance on which terms to prioritise for Writer documentation versus which to escalate to the central team.</p>
-        <p>The design principle was self-service: any PM, designer, or engineer could run the workshop using the toolkit, without needing a content designer present. This was the only approach that could scale across HubSpot's 40+ product teams.</p>
-        <p>I piloted the workshop with three teams. Across those sessions, the teams identified 22 new terms — terms that had never been formally documented and were causing inconsistency across their product areas. Each session ran in under 60 minutes.</p>
-      </div>
-    </section>
-
-    <hr class="divider">
-
-    <!-- SCALING -->
-    <section class="section" id="scaling">
-      <p class="section-eyebrow">Scaling and buy-in</p>
-      <h2 class="section-title">Leadership buy-in and a 2025 rollout plan.</h2>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Early 2024</div>
-          <div class="timeline-content">
-            <div class="timeline-title">Discovery and governance design</div>
-            <div class="timeline-desc">Ran discovery interviews with 8 people across 6 product lines. Designed and piloted a self-serve terminology workshop with 3 teams, resulting in 22 new terms identified. Built the toolkit so teams could run workshops independently.</div>
+      <div class="layer-diagram">
+        <div class="layer" style="--layer-color: #FF4800;">
+          <div class="layer-num">L1</div>
+          <div class="layer-body">
+            <div class="layer-name">Content Skills</div>
+            <div class="layer-desc">The rules engine — the documented terminology and style guidelines that the checker validates against. This is the knowledge base. Without accurate, complete rules, nothing else works. A significant part of the pre-engineering work has been auditing ~2,500 terms to assess what can be automatically checked and what needs human judgment.</div>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Late 2024</div>
-          <div class="timeline-content">
-            <div class="timeline-title">Scaling and leadership buy-in</div>
-            <div class="timeline-desc">Presented to UX Leadership at Design Review. Ran 3 pilots of the self-serve workshop, where teams identified 27 terms in a single 60-minute session. Secured Director+ buy-in for a 2025 rollout, incorporating terminology into teams' quarterly operating systems.</div>
+        <div class="layer" style="--layer-color: #042729;">
+          <div class="layer-num">L2</div>
+          <div class="layer-body">
+            <div class="layer-name">Content Services</div>
+            <div class="layer-desc">The checking mechanism — the logic that reads UI strings from PRs and runs them against the rules. This is where the deterministic approach matters: the checker gives a clear, auditable yes/no rather than an AI-generated suggestion that might be inconsistent between runs.</div>
+          </div>
+        </div>
+        <div class="layer" style="--layer-color: #B9CDBE;">
+          <div class="layer-num">L3</div>
+          <div class="layer-body">
+            <div class="layer-name">Fix and Reporting Mechanisms</div>
+            <div class="layer-desc">How findings get acted on — surfacing issues to engineers in the PR workflow, routing reports to content design DRIs, and tracking remediation over time. This layer determines whether the checker changes behaviour or just produces reports nobody reads.</div>
           </div>
         </div>
       </div>
 
-      <div class="prose">
-        <p>Presenting to UX Leadership at Design Review was a turning point. The combination of customer evidence from the VoC analysis (see <a href="terminology.html">the Terminology overview</a>) and the workshop pilot results — 27 terms identified in a single session — made the case for treating this as a strategic priority rather than a maintenance task.</p>
-        <p>Director+ buy-in unlocked the ability to incorporate terminology workshops into teams' quarterly operating systems, rather than relying on individual content designers to pitch individual teams.</p>
+      <div class="project-image" style="margin-top:24px;">
+        <img src="images/tc-latest-app.png" alt="The Terminology Checker showing 270,752 issues across HubSpot product areas">
+        <p class="image-caption">The current version of the Terminology Checker — 270,752 issues identified and grouped by hub and platform layer across 47 product areas. Each area shows Fix, Caution, Review, and Document issue counts.</p>
+      </div>
+
+      <div class="needs-input" style="margin-top:24px;">
+        <span class="needs-input-flag">⚑</span>
+        <div class="needs-input-text">
+          <strong>NEEDS YOUR INPUT:</strong> The current status of the auto-fix column assessment in Sheet 1 of the terms workbook — last I knew, 106 of 111 terms were unassessed, and completing this was the blocker for engineering scoping. Has this progressed? The current state of that work should be reflected here.
+        </div>
       </div>
     </section>
 
     <hr class="divider">
 
-    <!-- CODE ORANGE -->
-    <section class="section" id="code-orange">
-      <p class="section-eyebrow">Code Orange</p>
-      <h2 class="section-title">Governance at scale across three product groups.</h2>
+    <!-- KEY DECISIONS -->
+    <section class="section" id="decisions">
+      <p class="section-eyebrow">Key decisions</p>
+      <h2 class="section-title">What I chose and why.</h2>
       <div class="prose">
-        <p>In mid-2025, a company-wide "Code Orange" quality initiative created a window to push the terminology governance work at scale. Rather than continuing to roll out workshops team by team, I pivoted to running direct analysis across product lines — using the vibe-coded checker (Strand 2) to scan live product strings and generate targeted reports.</p>
-        <p>I sent 22 reports to DRIs across Automation, Data Hub, and Reporting. Each report identified specific terminology issues in their product area, categorised by severity: terms used incorrectly, terms that needed documentation, and terms that required a decision about canonical usage.</p>
+        <p>The most consequential decisions in the engineering rebuild weren't about UI. They were about architecture, ownership, and what "good enough" meant at each stage.</p>
       </div>
 
-      <div class="stat-row">
-        <div class="stat-card">
-          <div class="stat-number">22</div>
-          <div class="stat-desc">Reports sent to DRIs across three product groups</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">1,673</div>
-          <div class="stat-desc">Terms flagged as used incorrectly</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">3,638</div>
-          <div class="stat-desc">Instances potentially needing documentation</div>
-        </div>
-      </div>
+      <div class="decision-stack">
 
-      <div class="prose">
-        <p>Teams across all three product groups are actively working on the flagged changes. The Code Orange sprint demonstrated that the governance model could operate at a scale that was impossible when relying solely on workshops — and reinforced the case for the engineering rebuild (Strand 3) that would make this kind of analysis automatic.</p>
+        <div class="decision-card">
+          <div class="decision-icon rejected">✕</div>
+          <div class="decision-body">
+            <div class="decision-title">Use Writer's fully agentic PR-checking approach <span class="badge rejected">Not chosen</span></div>
+            <div class="decision-text">Writer (our AI writing platform) proposed building a fully agentic checker that would handle PR review end-to-end. The appeal was speed to market — Writer's team would own the build. The risk was loss of control: an agentic approach is non-deterministic, harder to audit, and creates a dependency on a third-party platform for a core quality function. We also had an unresolved question about whether Writer's Knowledge Graph was accessible via external API or only to Writer's own agents. I recommended against this approach and sent a diplomatic decline to the Writer engineering contact. Jonathon took over the ongoing Writer relationship.</div>
+          </div>
+        </div>
+
+        <div class="decision-card">
+          <div class="decision-icon chosen">✓</div>
+          <div class="decision-body">
+            <div class="decision-title">Build a deterministic in-house checker, with optional Writer KG calls <span class="badge chosen">Chosen</span></div>
+            <div class="decision-text">A deterministic checker gives consistent, auditable results. Engineers can trust the output and understand why a flag was raised. It keeps ownership of the rules and the workflow inside HubSpot. The architecture allows us to optionally call Writer's Knowledge Graph as a knowledge source if the API question gets resolved — so we're not closing that door, we're just not depending on it.</div>
+          </div>
+        </div>
+
+        <div class="decision-card">
+          <div class="decision-icon rejected">✕</div>
+          <div class="decision-body">
+            <div class="decision-title">Continue as a standalone app (Lovable/Supabase) <span class="badge rejected">Not chosen</span></div>
+            <div class="decision-text">The first version of the checker was a standalone web app built on Lovable and Supabase. It worked well as a proof of concept and for the Code Orange reporting sprint. But a standalone app requires content designers to manually run audits — it doesn't close the loop in the engineering workflow. The highest-leverage intervention is catching issues before they ship, not after.</div>
+          </div>
+        </div>
+
+        <div class="decision-card">
+          <div class="decision-icon chosen">✓</div>
+          <div class="decision-body">
+            <div class="decision-title">Integrate into the PR workflow directly <span class="badge chosen">Chosen</span></div>
+            <div class="decision-text">Integrating into the PR workflow means the checker runs automatically on every relevant PR, without requiring any action from content design. This is the difference between a useful tool and a behaviour-changing one. Engineers get immediate feedback. Content designers get visibility. Issues get caught before production.</div>
+          </div>
+        </div>
+
       </div>
 
       <div class="needs-input">
         <span class="needs-input-flag">⚑</span>
         <div class="needs-input-text">
-          <strong>NEEDS YOUR INPUT:</strong> Any update on whether DRI teams have shipped terminology fixes from the Code Orange reports? If changes have been made, adding a "before/after" example or a specific team's progress would strengthen this section.
+          <strong>NEEDS YOUR INPUT:</strong> Are there other significant decisions I've missed or got wrong? In particular: was there a decision point around <em>which</em> rules to prioritise for automation vs keeping as human judgment? That felt like a meaningful call based on the terms workbook audit. If so, worth capturing here.
         </div>
       </div>
     </section>
@@ -412,18 +422,20 @@
 
     <!-- OUTCOMES -->
     <section class="section" id="outcomes">
-      <p class="section-eyebrow">Outcomes</p>
-      <h2 class="section-title">What governance made possible.</h2>
+      <p class="section-eyebrow">Outcomes so far</p>
+      <h2 class="section-title">Work and results so far.</h2>
       <div class="prose">
-        <p><strong>The workshop toolkit.</strong> A reusable artefact that any team can use to identify and document terminology gaps — without a content designer present. Built once, used continuously.</p>
-        <p><strong>Director+ buy-in.</strong> Terminology governance incorporated into teams' quarterly operating systems — shifting it from a reactive, ad-hoc activity to a planned, recurring one.</p>
-        <p><strong>The Code Orange reports.</strong> 22 reports to DRIs, covering 1,673 incorrectly used terms and 3,638 undocumented instances across Automation, Data Hub, and Reporting.</p>
-        <p><strong>The foundation for automation.</strong> The governance work established the documentation standards and team buy-in that make the engineering rebuild viable. L1 of the checker architecture — the rules engine — depends on well-documented terms. Without the governance strand, Strand 3 would have nothing to check against.</p>
+        <p>The PR checker is still in build, but the groundwork has already had measurable impact.</p>
+        <p><strong>22 targeted reports sent to DRIs</strong> across Automation, Data Hub, and Reporting — identifying 1,673 incorrectly used terms and 3,638 instances potentially needing documentation. Teams are actively working on these changes.</p>
+        <p><strong>Engineering partners scoped in.</strong> Hemerson, Dakota, and Mary are committed to the build. The architecture and sequencing are agreed; the current blocker is completing the terms workbook auto-fix assessment to enable final scoping.</p>
+        <p><strong>Projected coverage uplift.</strong> The engineering rebuild is expected to raise automation coverage from ~47% to ~77% — a 30 percentage point improvement in the proportion of terminology issues that can be caught automatically.</p>
       </div>
 
-      <div class="quote-block">
-        <p class="quote-text">"The terminology tooling demonstrates Staff-level impact."</p>
-        <p class="quote-attribution">Jon Colman, Content Design Manager — performance review feedback, 2025</p>
+      <div class="needs-input">
+        <span class="needs-input-flag">⚑</span>
+        <div class="needs-input-text">
+          <strong>NEEDS YOUR INPUT:</strong> Two things to add here if you have them: (1) any update on whether DRI teams have shipped terminology fixes from the Code Orange reports, and (2) the Button 2026 conference outcome — did the pitch get accepted? That's a useful external validation signal worth documenting.
+        </div>
       </div>
     </section>
 
@@ -432,16 +444,16 @@
     <!-- NEXT -->
     <section class="section" id="next">
       <p class="section-eyebrow">What's next</p>
-      <h2 class="section-title">Continuing the rollout and feeding the engineering build.</h2>
+      <h2 class="section-title">Completing the terms assessment and shipping the PR checker.</h2>
       <div class="prose">
-        <p>The governance strand continues to run in parallel with the tooling work. Priorities include following up on Code Orange report progress, running workshops with product groups that haven't yet been covered, and ensuring the terms workbook auto-fix assessment is completed to unblock the engineering scoping for Strand 3.</p>
-        <p>The governance work feeds directly into Strand 3: the better the documentation, the more effective the automated checker will be.</p>
+        <p>The PR checker in production is the milestone that takes this from "demonstrated capability" to "shipped infrastructure." The current focus is completing the terms workbook auto-fix assessment to unblock engineering scoping, then working through the build with Hemerson, Dakota, and Mary.</p>
+        <p>Alongside that, there's ongoing work to make the case visible to Mensur — both because the team reorganisation means he's new to this work, and because his background in centralised content design and string management at Meta makes him a natural audience for the argument this project makes.</p>
       </div>
 
       <div class="needs-input">
         <span class="needs-input-flag">⚑</span>
         <div class="needs-input-text">
-          <strong>NEEDS YOUR INPUT:</strong> Any update on the 2025 rollout plan — did the quarterly operating system integration happen as planned? And are there new teams or product groups that have run workshops since the Code Orange sprint?
+          <strong>NEEDS YOUR INPUT:</strong> Anything you want to add about the engineering integration timeline, or the KPIs you're planning to track once the checker is live? Having a "we'll know it's working when…" statement here would strengthen the outcome narrative.
         </div>
       </div>
     </section>

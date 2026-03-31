@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kieran Forde — Content Design Work</title>
+  <title>Kieran Forde — Current Work</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
@@ -44,13 +44,20 @@
 
     .nav-logo svg { height: 22px; width: auto; display: block; }
 
-    .nav-meta {
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+
+    .nav-link {
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--hs-sage);
+      text-decoration: none;
+      transition: color 0.15s;
     }
+
+    .nav-link:hover { color: #fff; }
+    .nav-link.active { color: #fff; }
 
     /* ── HERO ── */
     .hero {
@@ -160,13 +167,7 @@
       color: var(--hs-orange);
     }
 
-    .section-count {
-      font-size: 12px;
-      font-weight: 500;
-      color: rgba(20,20,20,0.4);
-    }
-
-    /* ── PROJECT CARDS ── */
+    /* ── PROJECT CARD ── */
     .projects {
       display: flex;
       flex-direction: column;
@@ -233,18 +234,8 @@
       color: var(--hs-orange);
     }
 
-    .tag.status-complete {
-      background: rgba(185,205,190,0.4);
-      color: #2a4a2e;
-    }
-
-    .tag.status-draft {
-      background: rgba(214,194,217,0.4);
-      color: #46062B;
-    }
-
     .project-title {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--hs-teal);
       line-height: 1.25;
@@ -258,22 +249,42 @@
       max-width: 560px;
     }
 
-    .project-pills {
+    /* ── STRAND LIST ── */
+    .project-strands {
       display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-top: 4px;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(4,39,41,0.08);
     }
 
-    .pill {
-      font-size: 11px;
+    .strand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .strand-num {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--hs-orange);
+      background: rgba(255,72,0,0.08);
+      border-radius: 4px;
+      padding: 2px 7px;
+      flex-shrink: 0;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .strand-name {
+      font-size: 13px;
       font-weight: 500;
-      padding: 2px 10px;
-      border-radius: 100px;
-      border: 1px solid rgba(4,39,41,0.15);
-      color: rgba(20,20,20,0.55);
+      color: rgba(20,20,20,0.6);
     }
 
+    /* ── PROJECT RIGHT ── */
     .project-right {
       display: flex;
       flex-direction: column;
@@ -307,71 +318,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* ── PLACEHOLDER CARD ── */
-    .project-card.placeholder {
-      opacity: 0.45;
-      pointer-events: none;
-      border-style: dashed;
-      border-color: rgba(4,39,41,0.15);
-      background: transparent;
-    }
-
-    .project-card.placeholder::before { background: rgba(4,39,41,0.15); }
-
-    /* ── ABOUT STRIP ── */
-    .about-strip {
-      margin-top: 80px;
-      background: var(--hs-teal);
-      border-radius: 20px;
-      padding: 48px 48px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .about-strip h2 {
-      font-family: var(--font-serif);
-      font-size: 32px;
-      font-style: italic;
-      color: #fff;
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-
-    .about-strip p {
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.65);
-    }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .stat-block {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .stat-number {
-      font-size: 36px;
-      font-weight: 800;
-      color: var(--hs-orange);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--hs-sage);
-    }
-
     /* ── FOOTER ── */
     footer {
       background: var(--hs-neutral);
@@ -392,7 +338,6 @@
     @media (max-width: 640px) {
       nav, .hero { padding-left: 20px; padding-right: 20px; }
       main { padding: 60px 20px 80px; }
-      .about-strip { grid-template-columns: 1fr; padding: 32px; gap: 32px; }
       .project-card { grid-template-columns: 1fr; padding: 24px 20px; }
       footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
     }
@@ -414,15 +359,18 @@
         <path class="hs-w" d="M1064.01,115.52v-41.79c10.91-5.15,18.55-16.19,18.55-28.99v-.97c0-17.67-14.46-32.13-32.13-32.13h-.96c-17.67,0-32.13,14.46-32.13,32.13v.97c0,12.81,7.64,23.84,18.55,28.99v41.79c-16.24,2.51-31.08,9.21-43.32,19.06l-114.73-89.25c.75-2.91,1.28-5.9,1.29-9.04C879.14,16.27,862.94.03,842.92,0c-20.02-.03-36.26,16.18-36.29,36.2-.02,20.02,16.18,36.26,36.2,36.29,6.52,0,12.56-1.84,17.85-4.85l112.86,87.79c-9.6,14.49-15.22,31.84-15.22,50.52s6.18,37.65,16.62,52.53l-34.32,34.32c-2.71-.81-5.53-1.38-8.51-1.38-16.45,0-29.78,13.33-29.78,29.78s13.34,29.78,29.78,29.78,29.78-13.33,29.78-29.78c0-2.98-.57-5.8-1.38-8.51l33.95-33.95c15.41,11.76,34.6,18.83,55.49,18.83,50.6,0,91.62-41.02,91.62-91.62,0-45.81-33.65-83.65-77.56-90.43ZM1049.94,252.92c-25.94,0-46.98-21.03-46.98-46.97s21.03-46.97,46.98-46.97,46.97,21.03,46.97,46.97-21.03,46.97-46.97,46.97Z"/>
       </svg>
     </div>
-    <span class="nav-meta">Content Design · Central Team</span>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link active">Current work</a>
+      <a href="past-work.html" class="nav-link">Past work</a>
+    </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
       <p class="hero-eyebrow">Senior II Content Designer → Staff</p>
-      <h1 class="hero-title">Content design<br><span>work, documented.</span></h1>
-      <p class="hero-body">A record of content design projects at HubSpot — what was built, the decisions behind each one, and the results.</p>
+      <h1 class="hero-title">Work in progress,<br><span>documented.</span></h1>
+      <p class="hero-body">A live record of current projects — the decisions, methods, and outcomes as they happen. Past work is archived separately.</p>
       <div class="hero-meta">
         <div class="hero-meta-item">
           <span class="hero-meta-label">Designer</span>
@@ -448,24 +396,33 @@
   <main>
 
     <div class="section-header">
-      <span class="section-label">Projects</span>
-      <span class="section-count">14 projects · 2022–2026</span>
+      <span class="section-label">Current projects</span>
     </div>
 
     <div class="projects">
 
-      <a href="terminology-checker.html" class="project-card" style="--accent: #FF4800;">
+      <a href="terminology.html" class="project-card" style="--accent: #FF4800;">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-active">Active</span>
+            <span class="tag">Content Systems</span>
             <span class="tag">AI Tooling</span>
-            <span class="tag">Systems</span>
           </div>
-          <div class="project-title">Terminology Checker</div>
-          <div class="project-summary">A tool that scans UI strings in engineering PRs against HubSpot's terminology guidelines. Detects 85%+ of issues automatically; runs in under a second versus a ~20-minute manual audit.</div>
-          <div class="project-pills">
-            <span class="pill">Content Systems</span>
-            <span class="pill">Engineering</span>
+          <div class="project-title">Terminology</div>
+          <div class="project-summary">Building a scalable, automated terminology system for HubSpot — combining governance design, a vibe-coded proof of concept, and an engineering rebuild to catch inconsistencies before they ship.</div>
+          <div class="project-strands">
+            <div class="strand">
+              <span class="strand-num">1</span>
+              <span class="strand-name">Governance and workshops</span>
+            </div>
+            <div class="strand">
+              <span class="strand-num">2</span>
+              <span class="strand-name">Vibe coding the checker</span>
+            </div>
+            <div class="strand">
+              <span class="strand-num">3</span>
+              <span class="strand-name">Engineering rebuild on HubSpot infrastructure</span>
+            </div>
           </div>
         </div>
         <div class="project-right">
@@ -474,281 +431,6 @@
         </div>
       </a>
 
-      <a href="ai-experiences.html" class="project-card" style="--accent: #042729;">
-        <div class="project-left">
-          <div class="project-tag-row">
-            <span class="tag status-active">Active</span>
-            <span class="tag">AI UX</span>
-            <span class="tag">Lead</span>
-          </div>
-          <div class="project-title">AI Agents — Agent Builder and Breeze Studio</div>
-          <div class="project-summary">Content design lead for HubSpot's Agent Builder and Custom Assistant at INBOUND 2025. Defined naming systems, core concepts, and IA for the agent experience. After launch, unique tool usage grew 5×.</div>
-          <div class="project-pills">
-            <span class="pill">AI Content</span>
-            <span class="pill">Naming</span>
-            <span class="pill">IA</span>
-          </div>
-        </div>
-        <div class="project-right">
-          <div class="project-arrow">→</div>
-          <span class="project-year">2025</span>
-        </div>
-      </a>
-
-      <a href="terminology-governance.html" class="project-card" style="--accent: #2A6B72;">
-        <div class="project-left">
-          <div class="project-tag-row">
-            <span class="tag status-complete">Complete</span>
-            <span class="tag">Systems</span>
-            <span class="tag">Governance</span>
-          </div>
-          <div class="project-title">Terminology Governance</div>
-          <div class="project-summary">Designed a self-serve workshop for product teams to identify and document terminology gaps. Three pilots: 27 terms identified per 60-minute session. During Code Orange: sent 22 reports across three product groups, flagging 1,673 incorrectly used terms and 3,638 undocumented instances.</div>
-          <div class="project-pills">
-            <span class="pill">Workshop Design</span>
-            <span class="pill">Governance</span>
-          </div>
-        </div>
-        <div class="project-right">
-          <span class="project-year">2025</span>
-        </div>
-      </a>
-
-      <a href="use-cases.html" class="project-card" style="--accent: #FF4800;">
-        <div class="project-left">
-          <div class="project-tag-row">
-            <span class="tag status-complete">Complete</span>
-            <span class="tag">Growth</span>
-            <span class="tag">Copy Systems</span>
-          </div>
-          <div class="project-title">Use Cases Content Framework</div>
-          <div class="project-summary">Content framework for HubSpot's use cases across Free and Starter. Produced 120 copy snippets added to Writer. Results: Free–Starter CVR improved by 9k net additions; touchless purchase CVR up 209%.</div>
-          <div class="project-pills">
-            <span class="pill">Copy Systems</span>
-            <span class="pill">Growth</span>
-          </div>
-        </div>
-        <div class="project-right">
-          <span class="project-year">2024</span>
-        </div>
-      </a>
-
-      <a href="microapps-design-system.html" class="project-card" style="--accent: #B9CDBE;">
-        <div class="project-left">
-          <div class="project-tag-row">
-            <span class="tag status-complete">Complete</span>
-            <span class="tag">Design Systems</span>
-            <span class="tag">Growth</span>
-          </div>
-          <div class="project-title">Microapps Design System — Product Bridges</div>
-          <div class="project-summary">A design system for moving microapp users into HubSpot — principles, component guidance, and content patterns for bridge components. Product-bridged signups grew from 7.3% to 21.5% between July and December 2024.</div>
-          <div class="project-pills">
-            <span class="pill">Design Systems</span>
-            <span class="pill">Conversion</span>
-          </div>
-        </div>
-        <div class="project-right">
-          <span class="project-year">2024</span>
-        </div>
-      </a>
-
-      <a href="trellis-design-docs.html" class="project-card" style="--accent: #042729;">
-        <div class="project-left">
-          <div class="project-tag-row">
-            <span class="tag status-complete">Complete</span>
-            <span class="tag">Design Systems</span>
-            <span class="tag">Documentation</span>
-          </div>
-          <div class="project-title">Trellis Design Docs</div>
-          <div class="project-summary">Rewrote HubSpot's design systems content for the Trellis docs site launch, replacing guidance split across CANVAS and Storybook. Homepage: 5,358 impressions; content guidelines: 2,206. Won the Craft with Care award Q1 2025.</div>
-          <div class="project-pills">
-            <span class="pill">Design Systems</span>
-            <span class="pill">Documentation</span>
-          </div>
-        </div>
-        <div class="project-right">
-          <span class="project-year">2024</span>
-        </div>
-      </a>
-
-      <a href="microapp-naming.html" class="project-card" style="--accent: #FF4800;">
-        <div class="project-left">
-          <div class="project-tag-row">
-            <span class="tag status-complete">Complete</span>
-            <span class="tag">Microapps</span>
-            <span class="tag">Naming</span>
-          </div>
-          <div class="project-title">Microapp Naming and Build</div>
-          <div class="project-summary">Content design for four microapps — Campaign Assistant, Guide Creator, Blog Ideas Generator, Clip Creator. Led the naming process for Guide Creator; Marketing adopted it as their standard approach. Campaign Assistant was the lead announcement at INBOUND 2023, with 3,000+ signups in its first three months.</div>
-          <div class="project-pills">
-            <span class="pill">Naming</span>
-            <span class="pill">Copy</span>
-          </div>
-        </div>
-        <div class="project-right">
-          <span class="project-year">2023</span>
-        </div>
-      </a>
-
-      <a href="email-signature-generator.html" class="project-card" style="--accent: #2A6B72;">
-        <div class="project-left">
-          <div class="project-tag-row">
-            <span class="tag status-complete">Complete</span>
-            <span class="tag">Growth</span>
-            <span class="tag">Conversion</span>
-          </div>
-          <div class="project-title">Email Signature Generator — Conversion</div>
-          <div class="project-summary">Added sign-up CTAs to HubSpot's most-visited microapp. Monthly signups grew from 468 to 6,452.</div>
-          <div class="project-pills">
-            <span class="pill">Conversion</span>
-            <span class="pill">Copy</span>
-          </div>
-        </div>
-        <div class="project-right">
-          <span class="project-year">2023</span>
-        </div>
-      </a>
-
-      <a href="viral-links.html" class="project-card" style="--accent: #B9CDBE;">
-        <div class="project-left">
-          <div class="project-tag-row">
-            <span class="tag status-complete">Complete</span>
-            <span class="tag">Growth</span>
-            <span class="tag">Conversion</span>
-          </div>
-          <div class="project-title">Viral Links — Copy Redesign</div>
-          <div class="project-summary">Redesigned viral link copy across HubSpot to consistently explain features, benefits, and cost. Three live experiments: 42,000 more signups initiated, 500 more completed.</div>
-          <div class="project-pills">
-            <span class="pill">Copy</span>
-            <span class="pill">Conversion</span>
-          </div>
-        </div>
-        <div class="project-right">
-          <span class="project-year">2023</span>
-        </div>
-      </a>
-
-      <a href="forms-empty-states.html" class="project-card" style="--accent: #042729;">
-        <div class="project-left">
-          <div class="project-tag-row">
-            <span class="tag status-complete">Complete</span>
-            <span class="tag">Onboarding</span>
-            <span class="tag">Patterns</span>
-          </div>
-          <div class="project-title">Forms and Deals — Empty States and Guided Tours</div>
-          <div class="project-summary">Empty states and guided tours to drive feature adoption. 14% increase in forms activation, 5.5% increase in Starter Activation. When applied to Reporting: guided tour usage up 22pp, 78% completion rate.</div>
-          <div class="project-pills">
-            <span class="pill">Onboarding</span>
-            <span class="pill">Patterns</span>
-          </div>
-        </div>
-        <div class="project-right">
-          <span class="project-year">2023</span>
-        </div>
-      </a>
-
-      <a href="get-started-heart.html" class="project-card" style="--accent: #FF4800;">
-        <div class="project-left">
-          <div class="project-tag-row">
-            <span class="tag status-complete">Complete</span>
-            <span class="tag">Onboarding</span>
-            <span class="tag">Strategy</span>
-          </div>
-          <div class="project-title">Get Started with HEART — Signup Redesign</div>
-          <div class="project-summary">Co-led content design for a multi-quarter signup redesign. Defined the vision and principles. Early experiments: 25% increase in activation, 52% increase in monetisation.</div>
-          <div class="project-pills">
-            <span class="pill">Strategy</span>
-            <span class="pill">Onboarding</span>
-          </div>
-        </div>
-        <div class="project-right">
-          <span class="project-year">2023</span>
-        </div>
-      </a>
-
-      <a href="help-in-nav.html" class="project-card" style="--accent: #2A6B72;">
-        <div class="project-left">
-          <div class="project-tag-row">
-            <span class="tag status-complete">Complete</span>
-            <span class="tag">Onboarding</span>
-            <span class="tag">IA</span>
-          </div>
-          <div class="project-title">Help in the Nav</div>
-          <div class="project-summary">Redesigned the help UI for Free and Starter users with step-by-step content snippets based on Knowledge Base articles. Result: 22.96% increase in self-serve support, 26.65% decrease in tickets from Starter customers.</div>
-          <div class="project-pills">
-            <span class="pill">IA</span>
-            <span class="pill">Content Strategy</span>
-          </div>
-        </div>
-        <div class="project-right">
-          <span class="project-year">2022</span>
-        </div>
-      </a>
-
-      <a href="hubspot-for-startups.html" class="project-card" style="--accent: #B9CDBE;">
-        <div class="project-left">
-          <div class="project-tag-row">
-            <span class="tag status-complete">Complete</span>
-            <span class="tag">Growth</span>
-            <span class="tag">Conversion</span>
-          </div>
-          <div class="project-title">HubSpot for Startups — Signup Flow</div>
-          <div class="project-summary">Redesigned the pricing and signup flow for HubSpot's startup discount program to clarify the free option and add post-signup upsells. Average increase of $16,450 in first-time purchases per month (~$200k annually).</div>
-          <div class="project-pills">
-            <span class="pill">Conversion</span>
-            <span class="pill">Copy</span>
-          </div>
-        </div>
-        <div class="project-right">
-          <span class="project-year">2022</span>
-        </div>
-      </a>
-
-      <a href="wordpress-demo.html" class="project-card" style="--accent: #042729;">
-        <div class="project-left">
-          <div class="project-tag-row">
-            <span class="tag status-complete">Complete</span>
-            <span class="tag">Onboarding</span>
-            <span class="tag">Copy</span>
-          </div>
-          <div class="project-title">WordPress Demo Improvements</div>
-          <div class="project-summary">Replaced a fictional narrative in the WordPress plugin demo with feature-focused content ordered by most valuable features first. 12.9% more demo completions; users 24.3% more likely to sign up for HubSpot after completing.</div>
-          <div class="project-pills">
-            <span class="pill">Copy</span>
-            <span class="pill">Onboarding</span>
-          </div>
-        </div>
-        <div class="project-right">
-          <span class="project-year">2022</span>
-        </div>
-      </a>
-
-    </div>
-
-    <!-- ABOUT STRIP -->
-    <div class="about-strip">
-      <div>
-        <h2>About this work.</h2>
-        <p>14 projects across four years at HubSpot, covering growth, onboarding, design systems, AI, and content tooling. Each entry documents what was built, the decisions made, and the results.</p>
-      </div>
-      <div class="about-stats">
-        <div class="stat-block">
-          <span class="stat-number">14</span>
-          <span class="stat-label">Projects documented</span>
-        </div>
-        <div class="stat-block">
-          <span class="stat-number">42k+</span>
-          <span class="stat-label">Signups from one experiment</span>
-        </div>
-        <div class="stat-block">
-          <span class="stat-number">$200k+</span>
-          <span class="stat-label">Revenue from one experiment</span>
-        </div>
-        <div class="stat-block">
-          <span class="stat-number">5×</span>
-          <span class="stat-label">Agent tool usage growth</span>
-        </div>
-      </div>
     </div>
 
   </main>

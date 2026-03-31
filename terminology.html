@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminology — Kieran Forde</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --hs-orange: #FF4800;
+      --hs-teal: #042729;
+      --hs-cream: #F8F5EE;
+      --hs-neutral: #141414;
+      --hs-sage: #B9CDBE;
+      --hs-lavender: #D6C2D9;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--hs-cream);
+      color: var(--hs-neutral);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--hs-teal);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 60px;
+    }
+    .nav-logo svg { height: 22px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-link {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--hs-sage);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: #fff; }
+    .nav-link.active { color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--hs-teal);
+      padding: 72px 40px 100px;
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 60px; background: var(--hs-cream);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .hero-breadcrumb {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--hs-orange); margin-bottom: 20px;
+    }
+    .breadcrumb-link {
+      color: var(--hs-orange); text-decoration: none;
+    }
+    .breadcrumb-link:hover { text-decoration: underline; }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 700; font-style: italic; color: #fff;
+      line-height: 1.1; margin-bottom: 20px;
+    }
+    .hero-subtitle {
+      font-size: 18px; font-weight: 500; color: rgba(255,255,255,0.75);
+      max-width: 580px; line-height: 1.6; margin-bottom: 40px;
+    }
+    .hero-meta-row { display: flex; gap: 32px; flex-wrap: wrap; }
+    .meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .meta-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--hs-sage);
+    }
+    .meta-value { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); }
+
+    /* ── PAGE BODY ── */
+    .page-body {
+      max-width: 860px; margin: 0 auto;
+      padding: 72px 40px 120px;
+    }
+
+    /* ── SECTIONS ── */
+    .section { margin-bottom: 72px; }
+    .section:last-child { margin-bottom: 0; }
+
+    .section-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--hs-orange);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 28px; font-weight: 700; font-style: italic;
+      color: var(--hs-teal); line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .prose {
+      font-size: 15px; line-height: 1.75; color: rgba(20,20,20,0.8);
+    }
+    .prose p { margin-bottom: 16px; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { font-weight: 700; color: var(--hs-neutral); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none; border-top: 1.5px solid rgba(4,39,41,0.1);
+      margin-bottom: 72px;
+    }
+
+    /* ── STAT CARDS ── */
+    .stat-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      margin: 28px 0;
+    }
+    .stat-card {
+      background: #fff; border-radius: 12px; padding: 24px 20px;
+      border-left: 4px solid var(--hs-orange);
+    }
+    .stat-number {
+      font-size: 32px; font-weight: 800; color: var(--hs-teal);
+      line-height: 1; margin-bottom: 6px;
+    }
+    .stat-desc {
+      font-size: 12px; font-weight: 500; line-height: 1.5;
+      color: rgba(20,20,20,0.55);
+    }
+
+    /* ── QUOTE BLOCK ── */
+    .quote-block {
+      border-left: 4px solid var(--hs-orange);
+      padding: 20px 24px; margin: 24px 0;
+      background: #fff; border-radius: 0 12px 12px 0;
+    }
+    .quote-text {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 16px; line-height: 1.6; color: var(--hs-teal);
+      margin-bottom: 10px;
+    }
+    .quote-attribution {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(20,20,20,0.45);
+    }
+
+    /* ── STRAND CARDS ── */
+    .strand-cards {
+      display: flex; flex-direction: column; gap: 12px;
+      margin-top: 8px;
+    }
+
+    .strand-card {
+      display: grid; grid-template-columns: auto 1fr auto;
+      gap: 20px; align-items: center;
+      background: #fff; border-radius: 12px; padding: 24px 28px;
+      text-decoration: none; color: inherit;
+      border: 1.5px solid transparent;
+      position: relative; overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .strand-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 4px; background: var(--hs-orange);
+      border-radius: 12px 0 0 12px;
+    }
+
+    .strand-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(4,39,41,0.10);
+      border-color: rgba(4,39,41,0.08);
+    }
+
+    .strand-badge {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
+      color: var(--hs-orange);
+      background: rgba(255,72,0,0.08);
+      border-radius: 6px;
+      padding: 5px 10px;
+      white-space: nowrap;
+      align-self: flex-start;
+      margin-top: 2px;
+    }
+
+    .strand-body {}
+
+    .strand-title {
+      font-size: 16px; font-weight: 700; color: var(--hs-teal);
+      margin-bottom: 6px;
+    }
+
+    .strand-desc {
+      font-size: 13px; line-height: 1.6; color: rgba(20,20,20,0.6);
+    }
+
+    .strand-status {
+      display: inline-flex; align-items: center;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 3px 10px;
+      border-radius: 100px;
+      background: rgba(255,72,0,0.10); color: var(--hs-orange);
+      white-space: nowrap; margin-top: 8px;
+    }
+
+    .strand-arrow {
+      font-size: 18px; color: rgba(20,20,20,0.25);
+      transition: color 0.15s, transform 0.15s;
+    }
+
+    .strand-card:hover .strand-arrow {
+      color: var(--hs-teal); transform: translateX(3px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--hs-neutral); padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    footer svg { height: 20px; width: auto; }
+    .footer-note { font-size: 12px; color: rgba(255,255,255,0.35); }
+
+    @media (max-width: 720px) {
+      nav, .hero { padding-left: 20px; padding-right: 20px; }
+      .page-body { padding: 48px 20px 80px; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+      .strand-card { grid-template-columns: auto 1fr; }
+      .strand-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1255.82 355.99">
+      <style>.hs-w{fill:#ffffff;}</style>
+      <polygon class="hs-w" points="136.01 201.48 43.79 201.48 43.79 298.62 0 298.62 0 58.93 43.79 58.93 43.79 159.35 136.01 159.35 136.01 58.93 179.79 58.93 179.79 298.62 136.01 298.62 136.01 201.48"/>
+      <path class="hs-w" d="M319.91,221.14c0,19.96-16.26,36.21-36.22,36.21s-36.21-16.24-36.21-36.21v-102.66h-41.47v102.66c0,42.83,34.85,77.67,77.68,77.67s77.67-34.84,77.67-77.67v-102.66h-41.45v102.66Z"/>
+      <path class="hs-w" d="M627.6,129.05c0-21.05,13.93-27.72,29.18-27.72,12.28,0,28.53,9.35,39.14,20.71l27.19-32.06c-13.59-18.36-41.12-31.05-63.67-31.05-45.12,0-77.63,26.38-77.63,70.13,0,81.14,99.19,55.42,99.19,100.84,0,14.01-13.6,26.37-29.18,26.37-24.55,0-32.52-12.02-43.79-24.71l-30.19,31.38c19.25,23.71,43.13,35.74,71.66,35.74,42.79,0,77.29-26.71,77.29-68.46,0-90.15-99.18-62.1-99.18-101.16Z"/>
+      <path class="hs-w" d="M1241.21,260.33c-24.54,0-31.5-10.61-31.5-26.87v-71.98h38.14v-36.48h-38.14v-48.1l-42.12,18.91v146.62c0,37.49,25.86,56.4,61.34,56.4,5.31,0,12.61-.34,16.6-1.33l10.29-37.81c-4.64.32-9.95.65-14.61.65Z"/>
+      <path class="hs-w" d="M477.96,119.68c-20.57,0-34.92,5.97-48.79,19.58V60.36h-41.6v146.23c0,54.73,39.57,92.22,84.04,92.22,49.43,0,92.73-38.15,92.73-89.56s-39.93-89.57-86.38-89.57ZM477.7,256.95c-26.06,0-47.18-21.12-47.18-47.18s21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18-21.12,47.18-47.18,47.18Z"/>
+      <path class="hs-w" d="M929.59,207.09c0-51.41-43.31-89.56-92.73-89.56-44.46,0-84.04,37.49-84.04,92.22v146.23h41.6v-78.91c13.87,13.61,28.22,19.58,48.79,19.58,46.45,0,86.38-38.81,86.38-89.57ZM890.13,206.58c0,26.06-21.12,47.18-47.18,47.18s-47.18-21.12-47.18-47.18,21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18Z"/>
+      <path class="hs-w" d="M1064.01,115.52v-41.79c10.91-5.15,18.55-16.19,18.55-28.99v-.97c0-17.67-14.46-32.13-32.13-32.13h-.96c-17.67,0-32.13,14.46-32.13,32.13v.97c0,12.81,7.64,23.84,18.55,28.99v41.79c-16.24,2.51-31.08,9.21-43.32,19.06l-114.73-89.25c.75-2.91,1.28-5.9,1.29-9.04C879.14,16.27,862.94.03,842.92,0c-20.02-.03-36.26,16.18-36.29,36.2-.02,20.02,16.18,36.26,36.2,36.29,6.52,0,12.56-1.84,17.85-4.85l112.86,87.79c-9.6,14.49-15.22,31.84-15.22,50.52s6.18,37.65,16.62,52.53l-34.32,34.32c-2.71-.81-5.53-1.38-8.51-1.38-16.45,0-29.78,13.33-29.78,29.78s13.34,29.78,29.78,29.78,29.78-13.33,29.78-29.78c0-2.98-.57-5.8-1.38-8.51l33.95-33.95c15.41,11.76,34.6,18.83,55.49,18.83,50.6,0,91.62-41.02,91.62-91.62,0-45.81-33.65-83.65-77.56-90.43ZM1049.94,252.92c-25.94,0-46.98-21.03-46.98-46.97s21.03-46.97,46.98-46.97,46.97,21.03,46.97,46.97-21.03,46.97-46.97,46.97Z"/>
+    </svg>
+  </div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link active">Current work</a>
+    <a href="past-work.html" class="nav-link">Past work</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-breadcrumb"><a href="index.html" class="breadcrumb-link">Current work</a> · Terminology</p>
+    <h1 class="hero-title">Building a terminology<br>system for HubSpot.</h1>
+    <p class="hero-subtitle">A multi-strand project to make terminology consistent at scale — through governance frameworks, a vibe-coded proof of concept, and an engineering rebuild in the PR workflow.</p>
+    <div class="hero-meta-row">
+      <div class="meta-item">
+        <span class="meta-label">Status</span>
+        <span class="meta-value">Active · 2024–2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Strands</span>
+        <span class="meta-value">3 active workstreams</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Performance rating</span>
+        <span class="meta-value">Exceeds expectations</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BODY -->
+<div class="page-body">
+
+  <!-- VOICE OF CUSTOMER -->
+  <section class="section" id="voc">
+    <p class="section-eyebrow">Voice of the customer</p>
+    <h2 class="section-title">Terminology inconsistency is a named, documented customer pain.</h2>
+    <div class="prose">
+      <p>Before making the case for engineering investment, I needed customer evidence that terminology inconsistency was a real, named pain — not just a content design concern. I ran a VoC analysis using HEX customer feedback exports, building a classified dataset of confirmed terminology complaints.</p>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-number">270k</div>
+        <div class="stat-desc">Terminology-related issues found in automated scans of live product strings</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">34k</div>
+        <div class="stat-desc">Critical issues currently visible in production experiences</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">86%</div>
+        <div class="stat-desc">Of all Writer suggestions to UX designers are terminology issues</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>The themes are consistent across NPS, CSAT, support tickets, and usability research. Customers don't recognise HubSpot's terms, encounter the same word used for different things, and find that labels don't match actual behaviour. In high-stakes areas — AI especially — that confusion directly reduces confidence and slows adoption.</p>
+    </div>
+
+    <div class="quote-block">
+      <p class="quote-text">"You use the same language to discuss very different things and I'm so confused I want to scream."</p>
+      <p class="quote-attribution">CSAT survey</p>
+    </div>
+
+    <div class="quote-block">
+      <p class="quote-text">"In the current state of the world, you can have a lead (contact) that's a lead (lifecycle stage) that generates a lead (object)... and that's a perfectly logical sentence according to HubSpot's rules. This causes BIG headaches for customers."</p>
+      <p class="quote-attribution">Lead terminology research synthesis</p>
+    </div>
+
+    <div class="quote-block">
+      <p class="quote-text">"Terminology is the biggest determinant of user confidence."</p>
+      <p class="quote-attribution">Agents content study — Breeze AI Agent Builder usability research</p>
+    </div>
+
+    <div class="prose">
+      <p>Director-level feedback in 2024 flagged terminology problems as a visible design quality issue. Combined with the customer evidence, that gave the organisational mandate to treat this as a strategic priority rather than a maintenance task — and to present it at UX Design Review grounded in real customer cost.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- STRANDS -->
+  <section class="section" id="strands">
+    <p class="section-eyebrow">The work</p>
+    <h2 class="section-title">Three strands, one goal.</h2>
+    <div class="prose">
+      <p>The project runs across three interconnected workstreams. Governance addressed the documentation and human infrastructure. Vibe coding produced a working proof of concept and validated the approach. The engineering rebuild is now translating that proof of concept into production infrastructure.</p>
+    </div>
+
+    <div class="strand-cards">
+
+      <a href="terminology-governance.html" class="strand-card">
+        <span class="strand-badge">Strand 1</span>
+        <div class="strand-body">
+          <div class="strand-title">Governance and workshops</div>
+          <div class="strand-desc">Designing the governance infrastructure — a self-serve workshop toolkit for product teams to identify and document terminology gaps, piloted with three teams and scaled during Code Orange.</div>
+          <span class="strand-status">Active</span>
+        </div>
+        <span class="strand-arrow">→</span>
+      </a>
+
+      <a href="terminology-checker.html" class="strand-card">
+        <span class="strand-badge">Strand 2</span>
+        <div class="strand-body">
+          <div class="strand-title">Vibe coding the checker</div>
+          <div class="strand-desc">Building a working proof of concept on Lovable and Supabase — validating that automated terminology checking was feasible, fast, and accurate before committing engineering resource.</div>
+          <span class="strand-status">Active</span>
+        </div>
+        <span class="strand-arrow">→</span>
+      </a>
+
+      <a href="terminology-engineering.html" class="strand-card">
+        <span class="strand-badge">Strand 3</span>
+        <div class="strand-body">
+          <div class="strand-title">Engineering rebuild on HubSpot infrastructure</div>
+          <div class="strand-desc">Translating the proof of concept into a deterministic, in-house checker that integrates directly into the engineering PR workflow — currently in build with partners Hemerson, Dakota, and Mary.</div>
+          <span class="strand-status">Active</span>
+        </div>
+        <span class="strand-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1255.82 355.99">
+    <style>.hs-f{fill:rgba(255,255,255,0.35);}</style>
+    <polygon class="hs-f" points="136.01 201.48 43.79 201.48 43.79 298.62 0 298.62 0 58.93 43.79 58.93 43.79 159.35 136.01 159.35 136.01 58.93 179.79 58.93 179.79 298.62 136.01 298.62 136.01 201.48"/>
+    <path class="hs-f" d="M319.91,221.14c0,19.96-16.26,36.21-36.22,36.21s-36.21-16.24-36.21-36.21v-102.66h-41.47v102.66c0,42.83,34.85,77.67,77.68,77.67s77.67-34.84,77.67-77.67v-102.66h-41.45v102.66Z"/>
+    <path class="hs-f" d="M627.6,129.05c0-21.05,13.93-27.72,29.18-27.72,12.28,0,28.53,9.35,39.14,20.71l27.19-32.06c-13.59-18.36-41.12-31.05-63.67-31.05-45.12,0-77.63,26.38-77.63,70.13,0,81.14,99.19,55.42,99.19,100.84,0,14.01-13.6,26.37-29.18,26.37-24.55,0-32.52-12.02-43.79-24.71l-30.19,31.38c19.25,23.71,43.13,35.74,71.66,35.74,42.79,0,77.29-26.71,77.29-68.46,0-90.15-99.18-62.1-99.18-101.16Z"/>
+    <path class="hs-f" d="M1241.21,260.33c-24.54,0-31.5-10.61-31.5-26.87v-71.98h38.14v-36.48h-38.14v-48.1l-42.12,18.91v146.62c0,37.49,25.86,56.4,61.34,56.4,5.31,0,12.61-.34,16.6-1.33l10.29-37.81c-4.64.32-9.95.65-14.61.65Z"/>
+    <path class="hs-f" d="M477.96,119.68c-20.57,0-34.92,5.97-48.79,19.58V60.36h-41.6v146.23c0,54.73,39.57,92.22,84.04,92.22,49.43,0,92.73-38.15,92.73-89.56s-39.93-89.57-86.38-89.57ZM477.7,256.95c-26.06,0-47.18-21.12-47.18-47.18s21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18-21.12,47.18-47.18,47.18Z"/>
+    <path class="hs-f" d="M929.59,207.09c0-51.41-43.31-89.56-92.73-89.56-44.46,0-84.04,37.49-84.04,92.22v146.23h41.6v-78.91c13.87,13.61,28.22,19.58,48.79,19.58,46.45,0,86.38-38.81,86.38-89.57ZM890.13,206.58c0,26.06-21.12,47.18-47.18,47.18s-47.18-21.12-47.18-47.18,21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18Z"/>
+    <path class="hs-f" d="M1064.01,115.52v-41.79c10.91-5.15,18.55-16.19,18.55-28.99v-.97c0-17.67-14.46-32.13-32.13-32.13h-.96c-17.67,0-32.13,14.46-32.13,32.13v.97c0,12.81,7.64,23.84,18.55,28.99v41.79c-16.24,2.51-31.08,9.21-43.32,19.06l-114.73-89.25c.75-2.91,1.28-5.9,1.29-9.04C879.14,16.27,862.94.03,842.92,0c-20.02-.03-36.26,16.18-36.29,36.2-.02,20.02,16.18,36.26,36.2,36.29,6.52,0,12.56-1.84,17.85-4.85l112.86,87.79c-9.6,14.49-15.22,31.84-15.22,50.52s6.18,37.65,16.62,52.53l-34.32,34.32c-2.71-.81-5.53-1.38-8.51-1.38-16.45,0-29.78,13.33-29.78,29.78s13.34,29.78,29.78,29.78,29.78-13.33,29.78-29.78c0-2.98-.57-5.8-1.38-8.51l33.95-33.95c15.41,11.76,34.6,18.83,55.49,18.83,50.6,0,91.62-41.02,91.62-91.62,0-45.81-33.65-83.65-77.56-90.43ZM1049.94,252.92c-25.94,0-46.98-21.03-46.98-46.97s21.03-46.97,46.98-46.97,46.97,21.03,46.97,46.97-21.03,46.97-46.97,46.97Z"/>
+  </svg>
+  <span class="footer-note">Internal · Content Design · HubSpot</span>
+</footer>
+
+</body>
+</html>

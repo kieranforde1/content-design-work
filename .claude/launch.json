@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Portfolio (Python static server)",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8080", "--directory", "/Users/kiforde/Documents/Project docs site"],
+      "port": 8080
+    },
+    {
+      "name": "Portfolio (npx serve)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "/Users/kiforde/Documents/Project docs site", "-p", "8081", "--no-clipboard"],
+      "port": 8081
+    }
+  ]
+}
