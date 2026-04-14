@@ -264,19 +264,19 @@
 <section class="hero">
   <div class="hero-inner">
     <p class="hero-breadcrumb"><a href="terminology.html" class="breadcrumb-link">Terminology</a> · Strand 2</p>
-    <h1 class="hero-title">Vibe coding the<br>Terminology Checker.</h1>
-    <p class="hero-subtitle">Building a working proof of concept on Lovable and Supabase to validate automated terminology checking before committing engineering resource.</p>
+    <h1 class="hero-title">Building the<br>Terminology Checker.</h1>
+    <p class="hero-subtitle">Building a working proof of concept using AI-assisted tools to validate that automated terminology checking was feasible before committing engineering resource.</p>
     <div class="hero-meta-row">
       <div class="meta-item">
         <span class="meta-label">Status</span>
-        <span class="meta-value">Active · POC complete</span>
+        <span class="meta-value">Active · Prototype complete</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Timeline</span>
         <span class="meta-value">Early 2025</span>
       </div>
       <div class="meta-item">
-        <span class="meta-label">Stack</span>
+        <span class="meta-label">Built with</span>
         <span class="meta-value">Lovable · Supabase · Writer API</span>
       </div>
     </div>
@@ -319,11 +319,11 @@
 
     <!-- WHY VIBE CODE -->
     <section class="section" id="why-vibe-code">
-      <p class="section-eyebrow">Why vibe code this?</p>
+      <p class="section-eyebrow">Why build a prototype first?</p>
       <h2 class="section-title">Making the engineering case required something working, not a proposal.</h2>
       <div class="prose">
         <p>The governance work (Strand 1) established the problem and the human infrastructure for fixing it. But to justify engineering investment in an automated checker, I needed something more concrete than a presentation: a working tool that demonstrated the approach was feasible, fast, and accurate.</p>
-        <p>Vibe coding the proof of concept on Lovable and Supabase was the right call at this stage. It let me move fast without waiting for engineering capacity, build a real artefact for demonstrating the concept, and generate actual benchmarking data to make the case. The goal wasn't to ship production software — it was to answer the question: does automated terminology checking work?</p>
+        <p>Building a prototype using AI-assisted tools (Lovable, an app builder, and Supabase, a database platform) was the right call at this stage. It let me move fast without waiting for engineering capacity, build a real artefact for demonstrating the concept, and generate actual benchmarking data to make the case. The goal wasn't to build production software — it was to answer the question: does automated terminology checking work?</p>
         <p>The answer was yes. And having a working tool meant that answer came with numbers, not assumptions.</p>
       </div>
 
@@ -331,8 +331,8 @@
         <div class="decision-card">
           <div class="decision-icon chosen">✓</div>
           <div class="decision-body">
-            <div class="decision-title">Vibe code a proof of concept first <span class="badge chosen">Chosen</span></div>
-            <div class="decision-text">Building on Lovable and Supabase gave speed and flexibility. The app could load terms from Writer's API, process product UI strings in bulk, and surface issues grouped by severity — all without any engineering time. This created the benchmarking data needed to make the case and demonstrated exactly how the engineering version should behave.</div>
+            <div class="decision-title">Build a working prototype first <span class="badge chosen">Chosen</span></div>
+            <div class="decision-text">Building with AI-assisted tools gave speed and flexibility. The app could load terms from HubSpot's writing standards platform, process product text strings in bulk, and surface issues grouped by severity — all without any engineering time. This created the benchmarking data needed to make the case and demonstrated exactly how the engineering version should behave.</div>
           </div>
         </div>
       </div>
@@ -345,7 +345,7 @@
       <p class="section-eyebrow">The build</p>
       <h2 class="section-title">From first version to a tool that runs at scale.</h2>
       <div class="prose">
-        <p>The first version loaded UI strings from the Linguine API, compared them against Writer's term database, and flagged potential issues. It was basic — but it worked. 416 strings processed, 126 flagged terms identified, in under a second.</p>
+        <p>The first version loaded product text strings from HubSpot's internal API, compared them against the approved term list, and flagged potential issues. It was basic — but it worked. 416 strings processed, 126 flagged terms identified, in under a second.</p>
       </div>
 
       <div class="project-image">
@@ -371,8 +371,8 @@
       <p class="section-eyebrow">Code Orange sprint</p>
       <h2 class="section-title">Using the app to run governance at scale.</h2>
       <div class="prose">
-        <p>In mid-2025, the terminology work paused on tool development to run a direct analysis sprint across HubSpot product lines — what became known as the Code Orange terminology work.</p>
-        <p>The vibe-coded app was the engine for this. I used it to scan live product strings across Automation, Data Hub, and Reporting, then used the findings to generate 22 targeted reports for DRIs across those product groups.</p>
+        <p>In mid-2025, the terminology work paused on tool development to run a direct analysis sprint across HubSpot product lines — part of a company-wide quality initiative called Code Orange.</p>
+        <p>The prototype was the engine for this. I used it to scan live product text across Automation, Data Hub, and Reporting, then used the findings to generate 22 targeted reports for product owners across those areas.</p>
         <p>The reports identified 1,673 terms used incorrectly and 3,638 instances potentially needing documentation. Teams across all three product groups are actively working on these changes.</p>
         <p>This sprint also revealed the limits of the vibe-coded approach. Running the audits required manual effort — pulling strings, running the app, generating reports. It couldn't run automatically, couldn't integrate into the PR workflow, and required a content designer to operate it. The case for the engineering rebuild was now undeniable.</p>
       </div>
@@ -391,8 +391,8 @@
       <h2 class="section-title">What the proof of concept proved.</h2>
       <div class="prose">
         <p><strong>The detection rate benchmark.</strong> 85%+ of terminology issues found versus a manual audit baseline, completing in under a second. This was the technical validation needed to make the engineering case.</p>
-        <p><strong>The Code Orange reports.</strong> 22 reports sent to DRIs across three product groups. 1,673 incorrectly used terms and 3,638 instances flagged. Teams are actively working on these changes.</p>
-        <p><strong>The Staff-level signal.</strong> The work was cited in performance review feedback as demonstrating Staff-level impact — the first time automated content tooling had been built at this level within Content Design.</p>
+        <p><strong>The Code Orange reports.</strong> 22 reports sent to product owners across three product areas. 1,673 incorrectly used terms and 3,638 instances flagged. Teams are actively working on these changes.</p>
+        <p><strong>External recognition.</strong> The work was cited in performance review feedback as demonstrating exceptional impact — the first time automated content tooling had been built at this level within Content Design.</p>
       </div>
 
       <div class="quote-block">
@@ -408,8 +408,8 @@
       <p class="section-eyebrow">What changed</p>
       <h2 class="section-title">The proof of concept made the engineering rebuild inevitable.</h2>
       <div class="prose">
-        <p>The vibe-coded app did exactly what it needed to do: it demonstrated the concept, generated benchmarking data, and ran governance at scale during Code Orange. But a standalone app is not infrastructure.</p>
-        <p>The highest-leverage version of this work catches issues before they ship, not after. That requires integration into the engineering PR workflow — which requires an engineering rebuild. The proof of concept created the mandate for Strand 3.</p>
+        <p>The prototype did exactly what it needed to do: it demonstrated the concept, generated benchmarking data, and ran governance at scale during Code Orange. But a standalone app is not infrastructure.</p>
+        <p>The highest-leverage version of this work catches issues before they reach users, not after. That requires integration into the engineering code review workflow — which requires an engineering rebuild. The proof of concept created the mandate for Strand 3.</p>
       </div>
 
       <a href="terminology-engineering.html" class="next-strand">
@@ -436,7 +436,7 @@
     <path class="hs-f" d="M929.59,207.09c0-51.41-43.31-89.56-92.73-89.56-44.46,0-84.04,37.49-84.04,92.22v146.23h41.6v-78.91c13.87,13.61,28.22,19.58,48.79,19.58,46.45,0,86.38-38.81,86.38-89.57ZM890.13,206.58c0,26.06-21.12,47.18-47.18,47.18s-47.18-21.12-47.18-47.18,21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18Z"/>
     <path class="hs-f" d="M1064.01,115.52v-41.79c10.91-5.15,18.55-16.19,18.55-28.99v-.97c0-17.67-14.46-32.13-32.13-32.13h-.96c-17.67,0-32.13,14.46-32.13,32.13v.97c0,12.81,7.64,23.84,18.55,28.99v41.79c-16.24,2.51-31.08,9.21-43.32,19.06l-114.73-89.25c.75-2.91,1.28-5.9,1.29-9.04C879.14,16.27,862.94.03,842.92,0c-20.02-.03-36.26,16.18-36.29,36.2-.02,20.02,16.18,36.26,36.2,36.29,6.52,0,12.56-1.84,17.85-4.85l112.86,87.79c-9.6,14.49-15.22,31.84-15.22,50.52s6.18,37.65,16.62,52.53l-34.32,34.32c-2.71-.81-5.53-1.38-8.51-1.38-16.45,0-29.78,13.33-29.78,29.78s13.34,29.78,29.78,29.78,29.78-13.33,29.78-29.78c0-2.98-.57-5.8-1.38-8.51l33.95-33.95c15.41,11.76,34.6,18.83,55.49,18.83,50.6,0,91.62-41.02,91.62-91.62,0-45.81-33.65-83.65-77.56-90.43ZM1049.94,252.92c-25.94,0-46.98-21.03-46.98-46.97s21.03-46.97,46.98-46.97,46.97,21.03,46.97,46.97-21.03,46.97-46.97,46.97Z"/>
   </svg>
-  <span class="footer-note">Internal · Content Design · HubSpot</span>
+  <span class="footer-note">Content Design · HubSpot</span>
 </footer>
 
 </body>

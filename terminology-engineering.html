@@ -269,7 +269,7 @@
   <div class="hero-inner">
     <p class="hero-breadcrumb"><a href="terminology.html" class="breadcrumb-link">Terminology</a> · Strand 3</p>
     <h1 class="hero-title">Engineering rebuild on<br>HubSpot infrastructure.</h1>
-    <p class="hero-subtitle">Translating the proof of concept into a deterministic, in-house checker that catches terminology issues directly in the engineering PR workflow.</p>
+    <p class="hero-subtitle">Translating the proof of concept into a rules-based, in-house checker that catches terminology issues directly in the engineering code review workflow.</p>
     <div class="hero-meta-row">
       <div class="meta-item">
         <span class="meta-label">Status</span>
@@ -306,11 +306,11 @@
     <div class="stat-row" style="margin-top:0;margin-bottom:56px;">
       <div class="stat-card">
         <div class="stat-number">~77%</div>
-        <div class="stat-desc">Target automation coverage, up from ~47% baseline</div>
+        <div class="stat-desc">Target automated checking coverage, up from ~47% baseline</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">+30pp</div>
-        <div class="stat-desc">Projected increase in automated terminology coverage</div>
+        <div class="stat-desc">Projected increase in automated terminology coverage (percentage points)</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">3</div>
@@ -340,14 +340,14 @@
           <div class="layer-num">L2</div>
           <div class="layer-body">
             <div class="layer-name">Content Services</div>
-            <div class="layer-desc">The checking mechanism — the logic that reads UI strings from PRs and runs them against the rules. This is where the deterministic approach matters: the checker gives a clear, auditable yes/no rather than an AI-generated suggestion that might be inconsistent between runs.</div>
+            <div class="layer-desc">The checking mechanism — the logic that reads product text from code reviews and runs it against the rules. This is where the rules-based approach matters: the checker gives a clear, auditable yes/no rather than an AI-generated suggestion that might be inconsistent between runs.</div>
           </div>
         </div>
         <div class="layer" style="--layer-color: #B9CDBE;">
           <div class="layer-num">L3</div>
           <div class="layer-body">
             <div class="layer-name">Fix and Reporting Mechanisms</div>
-            <div class="layer-desc">How findings get acted on — surfacing issues to engineers in the PR workflow, routing reports to content design DRIs, and tracking remediation over time. This layer determines whether the checker changes behaviour or just produces reports nobody reads.</div>
+            <div class="layer-desc">How findings get acted on — surfacing issues to engineers in the code review workflow, routing reports to the content designers responsible for each area, and tracking remediation over time. This layer determines whether the checker changes behaviour or just produces reports nobody reads.</div>
           </div>
         </div>
       </div>
@@ -380,32 +380,32 @@
         <div class="decision-card">
           <div class="decision-icon rejected">✕</div>
           <div class="decision-body">
-            <div class="decision-title">Use Writer's fully agentic PR-checking approach <span class="badge rejected">Not chosen</span></div>
-            <div class="decision-text">Writer (our AI writing platform) proposed building a fully agentic checker that would handle PR review end-to-end. The appeal was speed to market — Writer's team would own the build. The risk was loss of control: an agentic approach is non-deterministic, harder to audit, and creates a dependency on a third-party platform for a core quality function. We also had an unresolved question about whether Writer's Knowledge Graph was accessible via external API or only to Writer's own agents. I recommended against this approach and sent a diplomatic decline to the Writer engineering contact. Jonathon took over the ongoing Writer relationship.</div>
+            <div class="decision-title">Use an AI-powered checker built by our writing platform vendor <span class="badge rejected">Not chosen</span></div>
+            <div class="decision-text">Writer (our AI writing standards platform) proposed building a fully AI-powered checker that would handle code review end-to-end. The appeal was speed to market — Writer's team would own the build. The risk was loss of control: an AI-powered approach produces inconsistent results, is harder to audit, and creates a dependency on a third-party platform for a core quality function. We also had an unresolved question about whether Writer's knowledge base was accessible via external API or only to Writer's own tools. I recommended against this approach.</div>
           </div>
         </div>
 
         <div class="decision-card">
           <div class="decision-icon chosen">✓</div>
           <div class="decision-body">
-            <div class="decision-title">Build a deterministic in-house checker, with optional Writer KG calls <span class="badge chosen">Chosen</span></div>
-            <div class="decision-text">A deterministic checker gives consistent, auditable results. Engineers can trust the output and understand why a flag was raised. It keeps ownership of the rules and the workflow inside HubSpot. The architecture allows us to optionally call Writer's Knowledge Graph as a knowledge source if the API question gets resolved — so we're not closing that door, we're just not depending on it.</div>
+            <div class="decision-title">Build a rules-based in-house checker, with an optional connection to the writing platform <span class="badge chosen">Chosen</span></div>
+            <div class="decision-text">A rules-based checker gives consistent, auditable results. Engineers can trust the output and understand why a flag was raised. It keeps ownership of the rules and the workflow inside HubSpot. The architecture allows an optional connection to Writer's knowledge base if the API question gets resolved — so we're not closing that door, we're just not depending on it.</div>
           </div>
         </div>
 
         <div class="decision-card">
           <div class="decision-icon rejected">✕</div>
           <div class="decision-body">
-            <div class="decision-title">Continue as a standalone app (Lovable/Supabase) <span class="badge rejected">Not chosen</span></div>
-            <div class="decision-text">The first version of the checker was a standalone web app built on Lovable and Supabase. It worked well as a proof of concept and for the Code Orange reporting sprint. But a standalone app requires content designers to manually run audits — it doesn't close the loop in the engineering workflow. The highest-leverage intervention is catching issues before they ship, not after.</div>
+            <div class="decision-title">Continue as a standalone app <span class="badge rejected">Not chosen</span></div>
+            <div class="decision-text">The first version of the checker was a standalone web app. It worked well as a proof of concept and for the Code Orange reporting sprint. But a standalone app requires content designers to manually run audits — it doesn't close the loop in the engineering workflow. The highest-leverage intervention is catching issues before they reach users, not after.</div>
           </div>
         </div>
 
         <div class="decision-card">
           <div class="decision-icon chosen">✓</div>
           <div class="decision-body">
-            <div class="decision-title">Integrate into the PR workflow directly <span class="badge chosen">Chosen</span></div>
-            <div class="decision-text">Integrating into the PR workflow means the checker runs automatically on every relevant PR, without requiring any action from content design. This is the difference between a useful tool and a behaviour-changing one. Engineers get immediate feedback. Content designers get visibility. Issues get caught before production.</div>
+            <div class="decision-title">Integrate into the code review workflow directly <span class="badge chosen">Chosen</span></div>
+            <div class="decision-text">Integrating into the code review workflow means the checker runs automatically on every relevant change, without requiring any action from content design. This is the difference between a useful tool and a behaviour-changing one. Engineers get immediate feedback. Content designers get visibility. Issues get caught before production.</div>
           </div>
         </div>
 
@@ -427,9 +427,9 @@
       <h2 class="section-title">Work and results so far.</h2>
       <div class="prose">
         <p>The PR checker is still in build, but the groundwork has already had measurable impact.</p>
-        <p><strong>22 targeted reports sent to DRIs</strong> across Automation, Data Hub, and Reporting — identifying 1,673 incorrectly used terms and 3,638 instances potentially needing documentation. Teams are actively working on these changes.</p>
-        <p><strong>Engineering partners scoped in.</strong> Hemerson, Dakota, and Mary are committed to the build. The architecture and sequencing are agreed; the current blocker is completing the terms workbook auto-fix assessment to enable final scoping.</p>
-        <p><strong>Projected coverage uplift.</strong> The engineering rebuild is expected to raise automation coverage from ~47% to ~77% — a 30 percentage point improvement in the proportion of terminology issues that can be caught automatically.</p>
+        <p><strong>22 targeted reports sent to product owners</strong> across Automation, Data Hub, and Reporting — identifying 1,673 incorrectly used terms and 3,638 instances potentially needing documentation. Teams are actively working on these changes.</p>
+        <p><strong>Engineering partners confirmed.</strong> Hemerson, Dakota, and Mary are committed to the build. The architecture and sequencing are agreed; the current blocker is completing a terms assessment to enable final scoping.</p>
+        <p><strong>Projected coverage improvement.</strong> The engineering rebuild is expected to raise automated checking coverage from ~47% to ~77% — a 30 percentage point improvement in the proportion of terminology issues that can be caught automatically.</p>
       </div>
 
       <div class="needs-input">
@@ -447,7 +447,7 @@
       <p class="section-eyebrow">What's next</p>
       <h2 class="section-title">Completing the terms assessment and shipping the PR checker.</h2>
       <div class="prose">
-        <p>The PR checker in production is the milestone that takes this from "demonstrated capability" to "shipped infrastructure." The current focus is completing the terms workbook auto-fix assessment to unblock engineering scoping, then working through the build with Hemerson, Dakota, and Mary.</p>
+        <p>The checker running in production is the milestone that takes this from "demonstrated capability" to "shipped infrastructure." The current focus is completing a terms assessment to unblock engineering scoping, then working through the build with Hemerson, Dakota, and Mary.</p>
         <p>Alongside that, there's ongoing work to make the case visible to Mensur — both because the team reorganisation means he's new to this work, and because his background in centralised content design and string management at Meta makes him a natural audience for the argument this project makes.</p>
       </div>
 
@@ -474,7 +474,7 @@
     <path class="hs-f" d="M929.59,207.09c0-51.41-43.31-89.56-92.73-89.56-44.46,0-84.04,37.49-84.04,92.22v146.23h41.6v-78.91c13.87,13.61,28.22,19.58,48.79,19.58,46.45,0,86.38-38.81,86.38-89.57ZM890.13,206.58c0,26.06-21.12,47.18-47.18,47.18s-47.18-21.12-47.18-47.18,21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18Z"/>
     <path class="hs-f" d="M1064.01,115.52v-41.79c10.91-5.15,18.55-16.19,18.55-28.99v-.97c0-17.67-14.46-32.13-32.13-32.13h-.96c-17.67,0-32.13,14.46-32.13,32.13v.97c0,12.81,7.64,23.84,18.55,28.99v41.79c-16.24,2.51-31.08,9.21-43.32,19.06l-114.73-89.25c.75-2.91,1.28-5.9,1.29-9.04C879.14,16.27,862.94.03,842.92,0c-20.02-.03-36.26,16.18-36.29,36.2-.02,20.02,16.18,36.26,36.2,36.29,6.52,0,12.56-1.84,17.85-4.85l112.86,87.79c-9.6,14.49-15.22,31.84-15.22,50.52s6.18,37.65,16.62,52.53l-34.32,34.32c-2.71-.81-5.53-1.38-8.51-1.38-16.45,0-29.78,13.33-29.78,29.78s13.34,29.78,29.78,29.78,29.78-13.33,29.78-29.78c0-2.98-.57-5.8-1.38-8.51l33.95-33.95c15.41,11.76,34.6,18.83,55.49,18.83,50.6,0,91.62-41.02,91.62-91.62,0-45.81-33.65-83.65-77.56-90.43ZM1049.94,252.92c-25.94,0-46.98-21.03-46.98-46.97s21.03-46.97,46.98-46.97,46.97,21.03,46.97,46.97-21.03,46.97-46.97,46.97Z"/>
   </svg>
-  <span class="footer-note">Internal · Content Design · HubSpot</span>
+  <span class="footer-note">Content Design · HubSpot</span>
 </footer>
 
 </body>
