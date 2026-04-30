@@ -4,8 +4,9 @@
     <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kieran Forde — Current Work</title>
+  <title>Kieran Forde — Content Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -42,8 +43,6 @@
       padding: 0 40px;
       height: 60px;
     }
-
-    .nav-logo svg { height: 22px; width: auto; display: block; }
 
     .nav-links { display: flex; gap: 24px; align-items: center; }
 
@@ -103,44 +102,12 @@
       margin-bottom: 24px;
     }
 
-    .hero-title span {
-      color: var(--hs-orange);
-      font-style: normal;
-    }
-
     .hero-body {
       font-size: 17px;
       font-weight: 400;
       line-height: 1.7;
       color: rgba(255,255,255,0.72);
-      max-width: 520px;
-    }
-
-    .hero-meta {
-      margin-top: 40px;
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-
-    .hero-meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .hero-meta-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--hs-sage);
-    }
-
-    .hero-meta-value {
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.85);
+      max-width: 560px;
     }
 
     /* ── MAIN CONTENT ── */
@@ -235,6 +202,11 @@
       color: var(--hs-orange);
     }
 
+    .tag.status-complete {
+      background: rgba(185,205,190,0.4);
+      color: #2a4a2e;
+    }
+
     .project-title {
       font-size: 22px;
       font-weight: 700;
@@ -282,7 +254,33 @@
     .strand-name {
       font-size: 13px;
       font-weight: 500;
-      color: rgba(20,20,20,0.6);
+      color: rgba(20,20,20,0.72);
+    }
+
+    /* ── PILLS ── */
+    .project-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .pill {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(4,39,41,0.15);
+      color: rgba(20,20,20,0.70);
+    }
+
+    /* ── OUTCOMES ── */
+    .project-outcomes {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(4,39,41,0.75);
+      margin-top: 6px;
+      line-height: 1.6;
     }
 
     /* ── PROJECT RIGHT ── */
@@ -315,7 +313,7 @@
     .project-year {
       font-size: 11px;
       font-weight: 600;
-      color: rgba(20,20,20,0.35);
+      color: rgba(20,20,20,0.65);
       letter-spacing: 0.05em;
     }
 
@@ -328,11 +326,9 @@
       justify-content: space-between;
     }
 
-    footer svg { height: 20px; width: auto; }
-
     .footer-note {
       font-size: 12px;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.55);
     }
 
     /* ── RESPONSIVE ── */
@@ -342,6 +338,12 @@
       .project-card { grid-template-columns: 1fr; padding: 24px 20px; }
       footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      .project-card { transition: none; }
+      .project-card:hover { transform: none; box-shadow: none; }
+      .project-card:hover .project-arrow { transform: none; }
+    }
   </style>
 </head>
 <body>
@@ -349,20 +351,12 @@
   <!-- NAV -->
   <nav>
     <div class="nav-logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1255.82 355.99">
-        <style>.hs-w{fill:#ffffff;}</style>
-        <polygon class="hs-w" points="136.01 201.48 43.79 201.48 43.79 298.62 0 298.62 0 58.93 43.79 58.93 43.79 159.35 136.01 159.35 136.01 58.93 179.79 58.93 179.79 298.62 136.01 298.62 136.01 201.48"/>
-        <path class="hs-w" d="M319.91,221.14c0,19.96-16.26,36.21-36.22,36.21s-36.21-16.24-36.21-36.21v-102.66h-41.47v102.66c0,42.83,34.85,77.67,77.68,77.67s77.67-34.84,77.67-77.67v-102.66h-41.45v102.66Z"/>
-        <path class="hs-w" d="M627.6,129.05c0-21.05,13.93-27.72,29.18-27.72,12.28,0,28.53,9.35,39.14,20.71l27.19-32.06c-13.59-18.36-41.12-31.05-63.67-31.05-45.12,0-77.63,26.38-77.63,70.13,0,81.14,99.19,55.42,99.19,100.84,0,14.01-13.6,26.37-29.18,26.37-24.55,0-32.52-12.02-43.79-24.71l-30.19,31.38c19.25,23.71,43.13,35.74,71.66,35.74,42.79,0,77.29-26.71,77.29-68.46,0-90.15-99.18-62.1-99.18-101.16Z"/>
-        <path class="hs-w" d="M1241.21,260.33c-24.54,0-31.5-10.61-31.5-26.87v-71.98h38.14v-36.48h-38.14v-48.1l-42.12,18.91v146.62c0,37.49,25.86,56.4,61.34,56.4,5.31,0,12.61-.34,16.6-1.33l10.29-37.81c-4.64.32-9.95.65-14.61.65Z"/>
-        <path class="hs-w" d="M477.96,119.68c-20.57,0-34.92,5.97-48.79,19.58V60.36h-41.6v146.23c0,54.73,39.57,92.22,84.04,92.22,49.43,0,92.73-38.15,92.73-89.56s-39.93-89.57-86.38-89.57ZM477.7,256.95c-26.06,0-47.18-21.12-47.18-47.18s21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18-21.12,47.18-47.18,47.18Z"/>
-        <path class="hs-w" d="M929.59,207.09c0-51.41-43.31-89.56-92.73-89.56-44.46,0-84.04,37.49-84.04,92.22v146.23h41.6v-78.91c13.87,13.61,28.22,19.58,48.79,19.58,46.45,0,86.38-38.81,86.38-89.57ZM890.13,206.58c0,26.06-21.12,47.18-47.18,47.18s-47.18-21.12-47.18-47.18,21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18Z"/>
-        <path class="hs-w" d="M1064.01,115.52v-41.79c10.91-5.15,18.55-16.19,18.55-28.99v-.97c0-17.67-14.46-32.13-32.13-32.13h-.96c-17.67,0-32.13,14.46-32.13,32.13v.97c0,12.81,7.64,23.84,18.55,28.99v41.79c-16.24,2.51-31.08,9.21-43.32,19.06l-114.73-89.25c.75-2.91,1.28-5.9,1.29-9.04C879.14,16.27,862.94.03,842.92,0c-20.02-.03-36.26,16.18-36.29,36.2-.02,20.02,16.18,36.26,36.2,36.29,6.52,0,12.56-1.84,17.85-4.85l112.86,87.79c-9.6,14.49-15.22,31.84-15.22,50.52s6.18,37.65,16.62,52.53l-34.32,34.32c-2.71-.81-5.53-1.38-8.51-1.38-16.45,0-29.78,13.33-29.78,29.78s13.34,29.78,29.78,29.78,29.78-13.33,29.78-29.78c0-2.98-.57-5.8-1.38-8.51l33.95-33.95c15.41,11.76,34.6,18.83,55.49,18.83,50.6,0,91.62-41.02,91.62-91.62,0-45.81-33.65-83.65-77.56-90.43ZM1049.94,252.92c-25.94,0-46.98-21.03-46.98-46.97s21.03-46.97,46.98-46.97,46.97,21.03,46.97,46.97-21.03,46.97-46.97,46.97Z"/>
-      </svg>
-    </div>
+    <a href="index.html" style="text-decoration: none;"><span style="font-family: var(--font-serif); font-style: italic; font-size: 20px; color: #fff; font-weight: 700;">Kieran Forde</span></a>
+  </div>
     <div class="nav-links">
-      <a href="index.html" class="nav-link active">Current work</a>
-      <a href="past-work.html" class="nav-link">Past work</a>
+      <a href="index.html" class="nav-link active">Featured work</a>
+      <a href="past-work.html" class="nav-link">All HubSpot work</a>
+      <a href="earlier-work.html" class="nav-link">Earlier work</a>
     </div>
   </nav>
 
@@ -370,22 +364,8 @@
   <section class="hero">
     <div class="hero-inner">
       <p class="hero-eyebrow">Senior Content Designer</p>
-      <h1 class="hero-title">Work in progress,<br><span>documented.</span></h1>
-      <p class="hero-body">A live record of current projects — the decisions, methods, and outcomes as they happen.</p>
-      <div class="hero-meta">
-        <div class="hero-meta-item">
-          <span class="hero-meta-label">Designer</span>
-          <span class="hero-meta-value">Kieran Forde</span>
-        </div>
-        <div class="hero-meta-item">
-          <span class="hero-meta-label">Team</span>
-          <span class="hero-meta-value">Content Design</span>
-        </div>
-<div class="hero-meta-item">
-          <span class="hero-meta-label">Updated</span>
-          <span class="hero-meta-value">March 2026</span>
-        </div>
-      </div>
+      <h1 class="hero-title">Content design that works at scale.</h1>
+      <p class="hero-body">I've spent ten years designing product content, building content systems, and leading teams — at a national statistics institute, a product startup, and HubSpot. Here's a selection of the work I'm most proud of.</p>
     </div>
   </section>
 
@@ -393,20 +373,41 @@
   <main>
 
     <div class="section-header">
-      <span class="section-label">Current projects</span>
+      <span class="section-label">Selected work</span>
     </div>
 
     <div class="projects">
 
-      <a href="terminology.html" class="project-card" style="--accent: #FF4800;">
+      <a href="use-cases.html" class="project-card" style="--accent: #FF4800;">
+        <div class="project-left">
+          <div class="project-tag-row">
+            <span class="tag status-complete">Complete</span>
+            <span class="tag">Growth</span>
+            <span class="tag">Copy Systems</span>
+          </div>
+          <div class="project-title">Use Cases Content Framework</div>
+          <div class="project-summary">HubSpot's free and entry-level plans needed a consistent way to communicate value across hundreds of use cases. I built the content framework and produced 120 approved copy variations. Result: 9,000 more users moved from free to paid; self-serve purchase rate up 209%.</div>
+          <div class="project-pills">
+            <span class="pill">Copy Systems</span>
+            <span class="pill">Growth</span>
+            <span class="pill">Conversion</span>
+          </div>
+        </div>
+        <div class="project-right">
+          <div class="project-arrow" aria-hidden="true">→</div>
+          <span class="project-year">2024</span>
+        </div>
+      </a>
+
+      <a href="terminology.html" class="project-card" style="--accent: #042729;">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-active">Active</span>
             <span class="tag">Content Systems</span>
             <span class="tag">AI Tooling</span>
           </div>
-          <div class="project-title">Terminology</div>
-          <div class="project-summary">Building a scalable, automated terminology system for HubSpot — combining governance design, an AI-assisted proof of concept, and an engineering rebuild to catch inconsistencies before they reach users.</div>
+          <div class="project-title">Terminology system</div>
+          <div class="project-summary">HubSpot's product UI contained thousands of inconsistent terms — the same concept described differently across surfaces. I led the design of a governance framework, built an AI-assisted proof of concept, and worked with engineering to rebuild it on HubSpot infrastructure to catch inconsistencies before they ship.</div>
           <div class="project-strands">
             <div class="strand">
               <span class="strand-num">1</span>
@@ -418,13 +419,72 @@
             </div>
             <div class="strand">
               <span class="strand-num">3</span>
-              <span class="strand-name">Engineering rebuild on HubSpot infrastructure</span>
+              <span class="strand-name">Engineering rebuild</span>
             </div>
           </div>
         </div>
         <div class="project-right">
-          <div class="project-arrow">→</div>
+          <div class="project-arrow" aria-hidden="true">→</div>
           <span class="project-year">2024–26</span>
+        </div>
+      </a>
+
+      <a href="ai-experiences.html" class="project-card" style="--accent: #042729;">
+        <div class="project-left">
+          <div class="project-tag-row">
+            <span class="tag status-complete">Complete</span>
+            <span class="tag">AI UX</span>
+            <span class="tag">Lead</span>
+          </div>
+          <div class="project-title">AI Agents — Agent Builder</div>
+          <div class="project-summary">Content design lead for HubSpot's Agent Builder and Custom Assistant, launched at INBOUND 2025. I defined the naming conventions, core concepts, and navigation structure for the agent experience. After launch, the number of distinct tools customers built with Agent Builder grew 5×.</div>
+          <div class="project-pills">
+            <span class="pill">AI Content</span>
+            <span class="pill">Naming</span>
+            <span class="pill">IA</span>
+          </div>
+        </div>
+        <div class="project-right">
+          <div class="project-arrow" aria-hidden="true">→</div>
+          <span class="project-year">2025</span>
+        </div>
+      </a>
+
+      <a href="earlier-work.html#bulletins" class="project-card" style="--accent: #B9CDBE;">
+        <div class="project-left">
+          <div class="project-tag-row">
+            <span class="tag">ONS</span>
+            <span class="tag">Research-led</span>
+            <span class="tag">Content Strategy</span>
+          </div>
+          <div class="project-title">Redesigning statistical bulletins</div>
+          <div class="project-summary">The Office for National Statistics published data users couldn't navigate. I led discovery — interviews, surveys, analytics, heatmapping — redesigned the content structure, created the guidance adopted by 100+ publishing teams, and defined new content patterns. The UK National Statistician cited my work in Parliament.</div>
+          <div class="project-outcomes">33% increase in page views · 30% more content consumed · 80% user satisfaction</div>
+        </div>
+        <div class="project-right">
+          <div class="project-arrow" aria-hidden="true">→</div>
+          <span class="project-year">2018–19</span>
+        </div>
+      </a>
+
+      <a href="earlier-work.html#trim" class="project-card" style="--accent: #B9CDBE;">
+        <div class="project-left">
+          <div class="project-tag-row">
+            <span class="tag">Edo</span>
+            <span class="tag">Product</span>
+            <span class="tag">Startup</span>
+          </div>
+          <div class="project-title">Trim — content measurement product</div>
+          <div class="project-summary">I spotted a gap in the market, wrote the business case, secured board investment, and became founding Product Director of a content analytics startup inside a digital agency. I owned research, design, roadmap, and marketing — and grew Trim to 100+ subscribers including the New Zealand Government, English Heritage, and British Heart Foundation.</div>
+          <div class="project-pills">
+            <span class="pill">Product Design</span>
+            <span class="pill">Content Strategy</span>
+            <span class="pill">Startup</span>
+          </div>
+        </div>
+        <div class="project-right">
+          <div class="project-arrow" aria-hidden="true">→</div>
+          <span class="project-year">2016–17</span>
         </div>
       </a>
 
@@ -434,17 +494,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1255.82 355.99">
-      <style>.hs-f{fill:rgba(255,255,255,0.35);}</style>
-      <polygon class="hs-f" points="136.01 201.48 43.79 201.48 43.79 298.62 0 298.62 0 58.93 43.79 58.93 43.79 159.35 136.01 159.35 136.01 58.93 179.79 58.93 179.79 298.62 136.01 298.62 136.01 201.48"/>
-      <path class="hs-f" d="M319.91,221.14c0,19.96-16.26,36.21-36.22,36.21s-36.21-16.24-36.21-36.21v-102.66h-41.47v102.66c0,42.83,34.85,77.67,77.68,77.67s77.67-34.84,77.67-77.67v-102.66h-41.45v102.66Z"/>
-      <path class="hs-f" d="M627.6,129.05c0-21.05,13.93-27.72,29.18-27.72,12.28,0,28.53,9.35,39.14,20.71l27.19-32.06c-13.59-18.36-41.12-31.05-63.67-31.05-45.12,0-77.63,26.38-77.63,70.13,0,81.14,99.19,55.42,99.19,100.84,0,14.01-13.6,26.37-29.18,26.37-24.55,0-32.52-12.02-43.79-24.71l-30.19,31.38c19.25,23.71,43.13,35.74,71.66,35.74,42.79,0,77.29-26.71,77.29-68.46,0-90.15-99.18-62.1-99.18-101.16Z"/>
-      <path class="hs-f" d="M1241.21,260.33c-24.54,0-31.5-10.61-31.5-26.87v-71.98h38.14v-36.48h-38.14v-48.1l-42.12,18.91v146.62c0,37.49,25.86,56.4,61.34,56.4,5.31,0,12.61-.34,16.6-1.33l10.29-37.81c-4.64.32-9.95.65-14.61.65Z"/>
-      <path class="hs-f" d="M477.96,119.68c-20.57,0-34.92,5.97-48.79,19.58V60.36h-41.6v146.23c0,54.73,39.57,92.22,84.04,92.22,49.43,0,92.73-38.15,92.73-89.56s-39.93-89.57-86.38-89.57ZM477.7,256.95c-26.06,0-47.18-21.12-47.18-47.18s21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18-21.12,47.18-47.18,47.18Z"/>
-      <path class="hs-f" d="M929.59,207.09c0-51.41-43.31-89.56-92.73-89.56-44.46,0-84.04,37.49-84.04,92.22v146.23h41.6v-78.91c13.87,13.61,28.22,19.58,48.79,19.58,46.45,0,86.38-38.81,86.38-89.57ZM890.13,206.58c0,26.06-21.12,47.18-47.18,47.18s-47.18-21.12-47.18-47.18,21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18Z"/>
-      <path class="hs-f" d="M1064.01,115.52v-41.79c10.91-5.15,18.55-16.19,18.55-28.99v-.97c0-17.67-14.46-32.13-32.13-32.13h-.96c-17.67,0-32.13,14.46-32.13,32.13v.97c0,12.81,7.64,23.84,18.55,28.99v41.79c-16.24,2.51-31.08,9.21-43.32,19.06l-114.73-89.25c.75-2.91,1.28-5.9,1.29-9.04C879.14,16.27,862.94.03,842.92,0c-20.02-.03-36.26,16.18-36.29,36.2-.02,20.02,16.18,36.26,36.2,36.29,6.52,0,12.56-1.84,17.85-4.85l112.86,87.79c-9.6,14.49-15.22,31.84-15.22,50.52s6.18,37.65,16.62,52.53l-34.32,34.32c-2.71-.81-5.53-1.38-8.51-1.38-16.45,0-29.78,13.33-29.78,29.78s13.34,29.78,29.78,29.78,29.78-13.33,29.78-29.78c0-2.98-.57-5.8-1.38-8.51l33.95-33.95c15.41,11.76,34.6,18.83,55.49,18.83,50.6,0,91.62-41.02,91.62-91.62,0-45.81-33.65-83.65-77.56-90.43ZM1049.94,252.92c-25.94,0-46.98-21.03-46.98-46.97s21.03-46.97,46.98-46.97,46.97,21.03,46.97,46.97-21.03,46.97-46.97,46.97Z"/>
-    </svg>
-    <span class="footer-note">Content Design · HubSpot</span>
+    <span class="footer-note">Content Designer · kieranforde1@gmail.com</span>
   </footer>
 
 </body>
