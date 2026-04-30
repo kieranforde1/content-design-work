@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terminology — Kieran Forde</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -35,7 +36,6 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 40px; height: 60px;
     }
-    .nav-logo svg { height: 22px; width: auto; display: block; }
     .nav-links { display: flex; gap: 24px; align-items: center; }
     .nav-link {
       font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
@@ -133,7 +133,7 @@
     }
     .stat-desc {
       font-size: 12px; font-weight: 500; line-height: 1.5;
-      color: rgba(20,20,20,0.55);
+      color: rgba(20,20,20,0.70);
     }
 
     /* ── QUOTE BLOCK ── */
@@ -199,7 +199,7 @@
     }
 
     .strand-desc {
-      font-size: 13px; line-height: 1.6; color: rgba(20,20,20,0.6);
+      font-size: 13px; line-height: 1.6; color: rgba(20,20,20,0.72);
     }
 
     .strand-status {
@@ -225,8 +225,7 @@
       background: var(--hs-neutral); padding: 32px 40px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    footer svg { height: 20px; width: auto; }
-    .footer-note { font-size: 12px; color: rgba(255,255,255,0.35); }
+    .footer-note { font-size: 12px; color: rgba(255,255,255,0.55); }
 
     @media (max-width: 720px) {
       nav, .hero { padding-left: 20px; padding-right: 20px; }
@@ -242,7 +241,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <span style="font-family: var(--font-serif); font-style: italic; font-size: 20px; color: #fff; font-weight: 700;">Kieran Forde</span>
+    <a href="index.html" style="text-decoration: none;"><span style="font-family: var(--font-serif); font-style: italic; font-size: 20px; color: #fff; font-weight: 700;">Kieran Forde</span></a>
   </div>
   <div class="nav-links">
     <a href="index.html" class="nav-link active">Featured work</a>

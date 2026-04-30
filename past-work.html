@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kieran Forde — Past Work</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -43,7 +44,6 @@
       height: 60px;
     }
 
-    .nav-logo svg { height: 22px; width: auto; display: block; }
 
     .nav-links { display: flex; gap: 24px; align-items: center; }
 
@@ -136,7 +136,7 @@
     .section-count {
       font-size: 12px;
       font-weight: 500;
-      color: rgba(20,20,20,0.4);
+      color: rgba(20,20,20,0.65);
     }
 
     /* ── PROJECT CARDS ── */
@@ -234,7 +234,7 @@
       padding: 2px 10px;
       border-radius: 100px;
       border: 1px solid rgba(4,39,41,0.15);
-      color: rgba(20,20,20,0.55);
+      color: rgba(20,20,20,0.70);
     }
 
     .project-right {
@@ -266,7 +266,7 @@
     .project-year {
       font-size: 11px;
       font-weight: 600;
-      color: rgba(20,20,20,0.35);
+      color: rgba(20,20,20,0.65);
       letter-spacing: 0.05em;
     }
 
@@ -279,11 +279,10 @@
       justify-content: space-between;
     }
 
-    footer svg { height: 20px; width: auto; }
 
     .footer-note {
       font-size: 12px;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.55);
     }
 
     /* ── RESPONSIVE ── */
@@ -293,6 +292,12 @@
       .project-card { grid-template-columns: 1fr; padding: 24px 20px; }
       footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      .project-card { transition: none; }
+      .project-card:hover { transform: none; box-shadow: none; }
+      .project-card:hover .project-arrow { transform: none; }
+    }
   </style>
 </head>
 <body>
@@ -300,7 +305,7 @@
   <!-- NAV -->
   <nav>
     <div class="nav-logo">
-    <span style="font-family: var(--font-serif); font-style: italic; font-size: 20px; color: #fff; font-weight: 700;">Kieran Forde</span>
+    <a href="index.html" style="text-decoration: none;"><span style="font-family: var(--font-serif); font-style: italic; font-size: 20px; color: #fff; font-weight: 700;">Kieran Forde</span></a>
   </div>
     <div class="nav-links">
       <a href="index.html" class="nav-link">Featured work</a>
@@ -344,7 +349,7 @@
           </div>
         </div>
         <div class="project-right">
-          <div class="project-arrow">→</div>
+          <div class="project-arrow" aria-hidden="true">→</div>
           <span class="project-year">2025</span>
         </div>
       </a>
@@ -364,7 +369,7 @@
           </div>
         </div>
         <div class="project-right">
-          <div class="project-arrow">→</div>
+          <div class="project-arrow" aria-hidden="true">→</div>
           <span class="project-year">2024</span>
         </div>
       </a>
@@ -384,7 +389,7 @@
           </div>
         </div>
         <div class="project-right">
-          <div class="project-arrow">→</div>
+          <div class="project-arrow" aria-hidden="true">→</div>
           <span class="project-year">2024</span>
         </div>
       </a>
@@ -404,7 +409,7 @@
           </div>
         </div>
         <div class="project-right">
-          <div class="project-arrow">→</div>
+          <div class="project-arrow" aria-hidden="true">→</div>
           <span class="project-year">2024</span>
         </div>
       </a>
@@ -424,7 +429,7 @@
           </div>
         </div>
         <div class="project-right">
-          <div class="project-arrow">→</div>
+          <div class="project-arrow" aria-hidden="true">→</div>
           <span class="project-year">2023</span>
         </div>
       </a>
@@ -444,7 +449,7 @@
           </div>
         </div>
         <div class="project-right">
-          <div class="project-arrow">→</div>
+          <div class="project-arrow" aria-hidden="true">→</div>
           <span class="project-year">2023</span>
         </div>
       </a>
@@ -464,7 +469,7 @@
           </div>
         </div>
         <div class="project-right">
-          <div class="project-arrow">→</div>
+          <div class="project-arrow" aria-hidden="true">→</div>
           <span class="project-year">2023</span>
         </div>
       </a>
@@ -484,7 +489,7 @@
           </div>
         </div>
         <div class="project-right">
-          <div class="project-arrow">→</div>
+          <div class="project-arrow" aria-hidden="true">→</div>
           <span class="project-year">2023</span>
         </div>
       </a>
@@ -504,7 +509,7 @@
           </div>
         </div>
         <div class="project-right">
-          <div class="project-arrow">→</div>
+          <div class="project-arrow" aria-hidden="true">→</div>
           <span class="project-year">2023</span>
         </div>
       </a>
@@ -524,7 +529,7 @@
           </div>
         </div>
         <div class="project-right">
-          <div class="project-arrow">→</div>
+          <div class="project-arrow" aria-hidden="true">→</div>
           <span class="project-year">2022</span>
         </div>
       </a>
@@ -544,7 +549,7 @@
           </div>
         </div>
         <div class="project-right">
-          <div class="project-arrow">→</div>
+          <div class="project-arrow" aria-hidden="true">→</div>
           <span class="project-year">2022</span>
         </div>
       </a>
@@ -564,7 +569,7 @@
           </div>
         </div>
         <div class="project-right">
-          <div class="project-arrow">→</div>
+          <div class="project-arrow" aria-hidden="true">→</div>
           <span class="project-year">2022</span>
         </div>
       </a>
