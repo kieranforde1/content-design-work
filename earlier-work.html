@@ -11,6 +11,7 @@
   <style>
     :root {
       --col-accent: #B07846;
+      --col-accent-light: #D4A56A;
       --col-primary: #1C2B3A;
       --col-cream: #F7F4EF;
       --col-neutral: #141414;
@@ -85,7 +86,7 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--col-accent);
+      color: var(--col-accent-light);
       margin-bottom: 20px;
     }
 
@@ -129,7 +130,7 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--col-accent);
+      color: var(--col-primary);
     }
 
     /* ── PROJECT CARDS ── */
@@ -148,20 +149,9 @@
       grid-template-columns: 1fr auto;
       align-items: start;
       gap: 16px;
-      border: 1.5px solid transparent;
+      border: 1.5px solid rgba(28,43,58,0.08);
       position: relative;
       overflow: hidden;
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: var(--accent, var(--col-primary));
-      border-radius: 12px 0 0 12px;
     }
 
     .project-left { display: flex; flex-direction: column; gap: 10px; }
@@ -247,12 +237,28 @@
       .project-card { grid-template-columns: 1fr; padding: 24px 20px; }
       footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
     }
+
+    :focus-visible {
+      outline: 2px solid var(--col-accent-light);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 16px;
+      background: var(--col-primary); color: #fff;
+      padding: 8px 16px; border-radius: 0 0 8px 8px;
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      z-index: 200;
+    }
+    .skip-link:focus { top: 0; }
   </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- NAV -->
-  <nav>
+  <nav aria-label="Main">
     <div class="nav-logo">
     <a href="index.html" style="text-decoration: none;"><span style="font-family: var(--font-serif); font-style: italic; font-size: 20px; color: #fff; font-weight: 700;">Kieran Forde</span></a>
   </div>
@@ -273,7 +279,7 @@
   </section>
 
   <!-- MAIN -->
-  <main>
+  <main id="main-content">
 
     <div class="section-header">
       <span class="section-label">Earlier projects</span>
@@ -281,7 +287,7 @@
 
     <div class="projects">
 
-      <div id="bulletins" class="project-card" style="--accent: #1C2B3A;">
+      <div id="bulletins" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag">ONS</span>
@@ -289,7 +295,7 @@
             <span class="tag">Content Strategy</span>
             <span class="tag">Scale</span>
           </div>
-          <div class="project-title">Redesigning statistical bulletins</div>
+          <h2 class="project-title">Redesigning statistical bulletins</h2>
           <div class="project-summary">ONS bulletins were long, complex, and structured around data sources rather than user needs. I led the Discovery phase — a site-wide survey, 14 user interviews, analytics review, heatmapping and on-page polls — and redesigned the content structure, guidance, and patterns adopted across all 100+ publishing teams at ONS. I also ran an internal comms campaign to embed the new ways of working.</div>
           <div class="project-outcomes">33% increase in page views · 30% more content consumed · 80% user satisfaction score · Findings cited by UK National Statistician in Parliament</div>
         </div>
@@ -298,14 +304,14 @@
         </div>
       </div>
 
-      <div id="trim" class="project-card" style="--accent: #B07846;">
+      <div id="trim" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag">Edo</span>
             <span class="tag">Product Director</span>
             <span class="tag">Startup</span>
           </div>
-          <div class="project-title">Trim — content measurement startup</div>
+          <h2 class="project-title">Trim — content measurement startup</h2>
           <div class="project-summary">I identified a gap in the market for a content auditing and analytics tool, built the business case, and secured investment to become Edo's first Product Director. I owned everything: user research (100+ interviews), UX and content design, roadmap, sales and marketing — all while running on HubSpot. Trim integrated with Google Analytics, scored content for readability and word count, and helped teams take a more data-led approach to content management.</div>
           <div class="project-outcomes">100+ paying subscribers including New Zealand Government, English Heritage, British Heart Foundation · Predictable subscription revenue stream for parent company</div>
         </div>
@@ -314,14 +320,14 @@
         </div>
       </div>
 
-      <div class="project-card" style="--accent: #B9CDBE;">
+      <div class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag">ONS</span>
             <span class="tag">Content Systems</span>
             <span class="tag">Data</span>
           </div>
-          <div class="project-title">Data tools and Style.ONS</div>
+          <h2 class="project-title">Data tools and Style.ONS</h2>
           <div class="project-summary">ONS content was created by statisticians who often didn't know who they were writing for. I built a self-service Google Data Studio dashboard giving every team access to analytics and search data about their pages — combining pageviews and bounce rate with actionable metrics like top search terms and most-clicked headings. I also overhauled Style.ONS (the ONS house style guide), established an evidence-based governance process for style changes, and directed an internal comms campaign to promote adoption.</div>
         </div>
         <div class="project-right">

@@ -11,6 +11,7 @@
   <style>
     :root {
       --col-accent: #B07846;
+      --col-accent-light: #D4A56A;
       --col-primary: #1C2B3A;
       --col-cream: #F7F4EF;
       --col-neutral: #141414;
@@ -60,10 +61,10 @@
     .hero-inner { max-width: 860px; margin: 0 auto; }
     .hero-breadcrumb {
       font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--col-accent); margin-bottom: 20px;
+      text-transform: uppercase; color: var(--col-accent-light); margin-bottom: 20px;
     }
     .breadcrumb-link {
-      color: var(--col-accent); text-decoration: none;
+      color: var(--col-accent-light); text-decoration: none;
     }
     .breadcrumb-link:hover { text-decoration: underline; }
     .hero-title {
@@ -96,7 +97,7 @@
 
     .section-eyebrow {
       font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--col-accent);
+      text-transform: uppercase; color: var(--col-primary);
       margin-bottom: 10px;
     }
     .section-title {
@@ -124,8 +125,8 @@
       margin: 28px 0;
     }
     .stat-card {
-      background: #fff; border-radius: 12px; padding: 24px 20px;
-      border-left: 4px solid var(--col-accent);
+      background: rgba(176,120,70,0.06); border-radius: 12px; padding: 24px 20px;
+      border: 1.5px solid rgba(176,120,70,0.18);
     }
     .stat-number {
       font-size: 32px; font-weight: 800; color: var(--col-primary);
@@ -138,9 +139,9 @@
 
     /* ── QUOTE BLOCK ── */
     .quote-block {
-      border-left: 4px solid var(--col-accent);
       padding: 20px 24px; margin: 24px 0;
-      background: #fff; border-radius: 0 12px 12px 0;
+      background: rgba(176,120,70,0.04); border-radius: 12px;
+      border: 1.5px solid rgba(176,120,70,0.22);
     }
     .quote-text {
       font-family: var(--font-serif); font-style: italic;
@@ -163,26 +164,20 @@
       gap: 20px; align-items: center;
       background: #fff; border-radius: 12px; padding: 24px 28px;
       text-decoration: none; color: inherit;
-      border: 1.5px solid transparent;
+      border: 1.5px solid rgba(28,43,58,0.08);
       position: relative; overflow: hidden;
       transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .strand-card::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: 4px; background: var(--col-accent);
-      border-radius: 12px 0 0 12px;
     }
 
     .strand-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 32px rgba(28,43,58,0.10);
-      border-color: rgba(28,43,58,0.08);
+      border-color: rgba(28,43,58,0.18);
     }
 
     .strand-badge {
       font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
-      color: var(--col-accent);
+      color: var(--col-primary);
       background: rgba(176,120,70,0.08);
       border-radius: 6px;
       padding: 5px 10px;
@@ -207,7 +202,7 @@
       font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; padding: 3px 10px;
       border-radius: 100px;
-      background: rgba(176,120,70,0.10); color: var(--col-accent);
+      background: rgba(176,120,70,0.10); color: var(--col-primary);
       white-space: nowrap; margin-top: 8px;
     }
 
@@ -234,12 +229,28 @@
       .strand-card { grid-template-columns: auto 1fr; }
       .strand-arrow { display: none; }
     }
+
+    :focus-visible {
+      outline: 2px solid var(--col-accent-light);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 16px;
+      background: var(--col-primary); color: #fff;
+      padding: 8px 16px; border-radius: 0 0 8px 8px;
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      z-index: 200;
+    }
+    .skip-link:focus { top: 0; }
   </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="Main">
   <div class="nav-logo">
     <a href="index.html" style="text-decoration: none;"><span style="font-family: var(--font-serif); font-style: italic; font-size: 20px; color: #fff; font-weight: 700;">Kieran Forde</span></a>
   </div>
@@ -257,24 +268,24 @@
     <h1 class="hero-title">Building a terminology<br>system for HubSpot.</h1>
     <p class="hero-subtitle">A multi-strand project to make terminology consistent at scale — through governance frameworks, an AI-assisted proof of concept, and an engineering rebuild in the code review workflow.</p>
     <div class="hero-meta-row">
-      <div class="meta-item">
-        <span class="meta-label">Status</span>
-        <span class="meta-value">Active · 2024–2026</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Strands</span>
-        <span class="meta-value">3 active workstreams</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Performance rating</span>
-        <span class="meta-value">Exceeds expectations</span>
-      </div>
+      <dl class="meta-item">
+        <dt class="meta-label">Status</dt>
+        <dd class="meta-value">Active · 2024–2026</dd>
+      </dl>
+      <dl class="meta-item">
+        <dt class="meta-label">Strands</dt>
+        <dd class="meta-value">3 active workstreams</dd>
+      </dl>
+      <dl class="meta-item">
+        <dt class="meta-label">Performance rating</dt>
+        <dd class="meta-value">Exceeds expectations</dd>
+      </dl>
     </div>
   </div>
 </section>
 
 <!-- BODY -->
-<div class="page-body">
+<div class="page-body" id="main-content">
 
   <!-- VOICE OF CUSTOMER -->
   <section class="section" id="voc">
