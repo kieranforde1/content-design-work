@@ -152,6 +152,26 @@
       border: 1.5px solid rgba(28,43,58,0.08);
       position: relative;
       overflow: hidden;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    a.project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(28,43,58,0.10);
+      border-color: rgba(28,43,58,0.18);
+    }
+
+    .project-arrow {
+      font-size: 18px;
+      color: rgba(20,20,20,0.25);
+      transition: color 0.15s, transform 0.15s;
+      margin-top: 2px;
+    }
+
+    a.project-card:hover .project-arrow {
+      color: var(--col-primary);
+      transform: translateX(3px);
     }
 
     .project-left { display: flex; flex-direction: column; gap: 10px; }
@@ -287,7 +307,7 @@
 
     <div class="projects">
 
-      <div id="bulletins" class="project-card">
+      <a href="ons-bulletins.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag">ONS</span>
@@ -301,10 +321,11 @@
         </div>
         <div class="project-right">
           <span class="project-year">2018–19</span>
+          <span class="project-arrow" aria-hidden="true">→</span>
         </div>
-      </div>
+      </a>
 
-      <div id="trim" class="project-card">
+      <a href="trim.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag">Edo</span>
@@ -317,10 +338,11 @@
         </div>
         <div class="project-right">
           <span class="project-year">2016–17</span>
+          <span class="project-arrow" aria-hidden="true">→</span>
         </div>
-      </div>
+      </a>
 
-      <div class="project-card">
+      <a href="ons-data-tools.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag">ONS</span>
@@ -332,8 +354,9 @@
         </div>
         <div class="project-right">
           <span class="project-year">2018–20</span>
+          <span class="project-arrow" aria-hidden="true">→</span>
         </div>
-      </div>
+      </a>
 
     </div>
 
