@@ -10,12 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --hs-orange: #FF4800;
-      --hs-teal: #042729;
-      --hs-cream: #F8F5EE;
-      --hs-neutral: #141414;
-      --hs-sage: #B9CDBE;
-      --hs-lavender: #D6C2D9;
+      --col-accent: #B07846;
+      --col-primary: #1C2B3A;
+      --col-cream: #F7F4EF;
+      --col-neutral: #141414;
+      --col-muted: #8FA8B5;
+      --col-lavender: #CEC1D8;
       --font-sans: 'Plus Jakarta Sans', sans-serif;
       --font-serif: 'Playfair Display', Georgia, serif;
     }
@@ -26,8 +26,8 @@
 
     body {
       font-family: var(--font-sans);
-      background: var(--hs-cream);
-      color: var(--hs-neutral);
+      background: var(--col-cream);
+      color: var(--col-neutral);
       min-height: 100vh;
     }
 
@@ -36,7 +36,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--hs-teal);
+      background: var(--col-primary);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -51,7 +51,7 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--hs-sage);
+      color: var(--col-muted);
       text-decoration: none;
       transition: color 0.15s;
     }
@@ -61,7 +61,7 @@
 
     /* ── HERO ── */
     .hero {
-      background: var(--hs-teal);
+      background: var(--col-primary);
       padding: 72px 40px 100px;
       position: relative;
       overflow: hidden;
@@ -74,7 +74,7 @@
       left: 0;
       right: 0;
       height: 60px;
-      background: var(--hs-cream);
+      background: var(--col-cream);
       clip-path: ellipse(55% 100% at 50% 100%);
     }
 
@@ -85,7 +85,7 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--hs-orange);
+      color: var(--col-accent);
       margin-bottom: 20px;
     }
 
@@ -121,7 +121,7 @@
       justify-content: space-between;
       margin-bottom: 40px;
       padding-bottom: 16px;
-      border-bottom: 1.5px solid rgba(4,39,41,0.12);
+      border-bottom: 1.5px solid rgba(28,43,58,0.12);
     }
 
     .section-label {
@@ -129,7 +129,7 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--hs-orange);
+      color: var(--col-accent);
     }
 
     /* ── PROJECT CARDS ── */
@@ -160,7 +160,7 @@
       top: 0;
       bottom: 0;
       width: 4px;
-      background: var(--accent, var(--hs-teal));
+      background: var(--accent, var(--col-primary));
       border-radius: 12px 0 0 12px;
     }
 
@@ -182,14 +182,14 @@
       text-transform: uppercase;
       padding: 3px 10px;
       border-radius: 100px;
-      background: var(--hs-cream);
-      color: var(--hs-teal);
+      background: var(--col-cream);
+      color: var(--col-primary);
     }
 
     .project-title {
       font-size: 20px;
       font-weight: 700;
-      color: var(--hs-teal);
+      color: var(--col-primary);
       line-height: 1.25;
     }
 
@@ -204,10 +204,10 @@
     .project-outcomes {
       font-size: 12px;
       font-weight: 600;
-      color: rgba(4,39,41,0.75);
+      color: rgba(28,43,58,0.75);
       margin-top: 6px;
       padding-top: 14px;
-      border-top: 1px solid rgba(4,39,41,0.08);
+      border-top: 1px solid rgba(28,43,58,0.08);
       line-height: 1.6;
     }
 
@@ -228,7 +228,7 @@
 
     /* ── FOOTER ── */
     footer {
-      background: var(--hs-neutral);
+      background: var(--col-neutral);
       padding: 32px 40px;
       display: flex;
       align-items: center;
@@ -281,7 +281,7 @@
 
     <div class="projects">
 
-      <div id="bulletins" class="project-card" style="--accent: #042729;">
+      <div id="bulletins" class="project-card" style="--accent: #1C2B3A;">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag">ONS</span>
@@ -298,7 +298,7 @@
         </div>
       </div>
 
-      <div id="trim" class="project-card" style="--accent: #FF4800;">
+      <div id="trim" class="project-card" style="--accent: #B07846;">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag">Edo</span>
