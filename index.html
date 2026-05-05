@@ -82,6 +82,25 @@
     .hero-inner {
       max-width: 860px;
       margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .hero-text { flex: 1; min-width: 0; }
+
+    .hero-portrait {
+      flex-shrink: 0;
+    }
+
+    .hero-portrait img {
+      width: 192px;
+      height: 192px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid rgba(212,165,106,0.45);
+      display: block;
     }
 
     .hero-eyebrow {
@@ -327,6 +346,8 @@
       main { padding: 60px 20px 80px; }
       .project-card { grid-template-columns: 1fr; padding: 24px 20px; }
       footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
+      .hero-inner { flex-direction: column-reverse; align-items: flex-start; gap: 32px; }
+      .hero-portrait img { width: 96px; height: 96px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -369,9 +390,14 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
-      <p class="hero-eyebrow">Senior Content Designer</p>
-      <h1 class="hero-title">Content design that works at scale.</h1>
-      <p class="hero-body">I've spent ten years designing product content, building content systems, and leading teams — at a national statistics institute, a product startup, and HubSpot. Here's a selection of the work I'm most proud of.</p>
+      <div class="hero-text">
+        <p class="hero-eyebrow">Senior Content Designer</p>
+        <h1 class="hero-title">Content design that works at scale.</h1>
+        <p class="hero-body">I've spent ten years designing product content, building content systems, and leading teams — at a national statistics institute, a product startup, and HubSpot. Here's a selection of the work I'm most proud of.</p>
+      </div>
+      <div class="hero-portrait">
+        <img src="images/portrait.jpg" alt="Kieran Forde" loading="eager" />
+      </div>
     </div>
   </section>
 
