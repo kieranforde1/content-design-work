@@ -4,7 +4,7 @@ role: Content Designer
 email: kieranforde1@gmail.com
 ---
 
-<!-- IMAGE: Profile photo — add filename here once available, e.g. photo: kieran-forde.jpg -->
+photo: images/portrait.jpg
 
 ## Bio
 
