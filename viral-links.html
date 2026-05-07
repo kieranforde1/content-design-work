@@ -26,7 +26,7 @@
     .hero{background:var(--col-primary);padding:72px 40px 100px;position:relative;overflow:hidden}
     .hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:60px;background:var(--col-cream);clip-path:ellipse(55% 100% at 50% 100%)}
     .hero-inner{max-width:860px;margin:0 auto}
-    .hero-breadcrumb{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--col-accent);margin-bottom:20px}
+    .hero-breadcrumb{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color: var(--col-accent-light);margin-bottom:20px}
     .hero-title{font-family:var(--font-serif);font-size:clamp(36px,5vw,60px);font-weight:700;font-style:italic;color:#fff;line-height:1.1;margin-bottom:20px}
     .hero-subtitle{font-size:18px;font-weight:500;color:rgba(255,255,255,.75);max-width:580px;line-height:1.6;margin-bottom:40px}
     .hero-meta-row{display:flex;gap:32px;flex-wrap:wrap}
@@ -41,7 +41,7 @@
     .content{min-width:0}
     .section{margin-bottom:72px}
     .section:last-child{margin-bottom:0}
-    .section-eyebrow{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--col-accent);margin-bottom:10px}
+    .section-eyebrow{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color: var(--col-primary);margin-bottom:10px}
     .section-title{font-family:var(--font-serif);font-size:28px;font-weight:700;font-style:italic;color:var(--col-primary);line-height:1.2;margin-bottom:20px}
     .prose{font-size:15px;line-height:1.75;color:rgba(20,20,20,.8)}
     .prose p{margin-bottom:16px}
@@ -53,20 +53,38 @@
     .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
     .stat-card{background:#fff;border-radius:12px;padding:24px 20px;border-left:4px solid var(--col-accent)}
     .stat-number{font-size:32px;font-weight:800;color:var(--col-primary);line-height:1;margin-bottom:6px}
-    .stat-desc{font-size:12px;font-weight:500;line-height:1.5;color:rgba(20,20,20,.55)}
-    .quote-block{border-left:4px solid var(--col-accent);padding:20px 24px;margin:24px 0;background:#fff;border-radius:0 12px 12px 0}
+    .stat-desc{font-size:12px;font-weight:500;line-height:1.5;color:rgba(20,20,20,0.70)}
+    .quote-block{padding:20px 24px;margin:24px 0;background:#fff;border-radius:0 12px 12px 0
+      border: 1.5px solid rgba(176,120,70,0.22);
+    }
     .quote-text{font-family:var(--font-serif);font-style:italic;font-size:16px;line-height:1.6;color:var(--col-primary);margin-bottom:10px}
-    .quote-attribution{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(20,20,20,.45)}
+    .quote-attribution{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(20,20,20,0.72)}
     .project-image{margin:28px 0}
     .project-image img{width:100%;border-radius:12px;border:1px solid rgba(28,43,58,.08);display:block;box-shadow:0 2px 16px rgba(28,43,58,.07)}
     .image-caption{font-size:12px;color:rgba(20,20,20,.65);margin-top:8px;line-height:1.5;font-style:italic}
     footer{background:var(--col-neutral);padding:32px 40px;display:flex;align-items:center;justify-content:space-between}
     .footer-note{font-size:12px;color:rgba(255,255,255,.55)}
     @media(max-width:720px){.page-body{grid-template-columns:1fr}.sidebar{display:none}nav,.hero{padding-left:20px;padding-right:20px}.page-body{padding:48px 20px 80px}.stat-row{grid-template-columns:1fr 1fr}}
+
+    :focus-visible {
+      outline: 2px solid var(--col-accent-light);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 16px;
+      background: var(--col-primary); color: #fff;
+      padding: 8px 16px; border-radius: 0 0 8px 8px;
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      z-index: 200;
+    }
+    .skip-link:focus { top: 0; }
   </style>
 </head>
 <body>
-<nav>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<nav aria-label="Main">
   <div class="nav-logo">
     <a href="index.html" style="text-decoration: none;"><span style="font-family: var(--font-serif); font-style: italic; font-size: 20px; color: #fff; font-weight: 700;">Kieran Forde</span></a>
   </div>
@@ -83,23 +101,23 @@
     <h1 class="hero-title">Viral Links — Copy Redesign</h1>
     <p class="hero-subtitle">Redesigning viral link copy across HubSpot to consistently explain features, benefits, and cost. Three live experiments: 42,000 more signups initiated, 500 more completed.</p>
     <div class="hero-meta-row">
-      <div class="meta-item">
-        <span class="meta-label">Status</span>
-        <span class="meta-value">Complete</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Timeline</span>
-        <span class="meta-value">2023</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Role</span>
-        <span class="meta-value">Design lead</span>
-      </div>
+      <dl class="meta-item">
+        <dt class="meta-label">Status</dt>
+        <dd class="meta-value">Complete</dd>
+      </dl>
+      <dl class="meta-item">
+        <dt class="meta-label">Timeline</dt>
+        <dd class="meta-value">2023</dd>
+      </dl>
+      <dl class="meta-item">
+        <dt class="meta-label">Role</dt>
+        <dd class="meta-value">Design lead</dd>
+      </dl>
     </div>
   </div>
 </div>
 
-<div class="page-body">
+<div class="page-body" id="main-content" tabindex="-1">
   <aside class="sidebar">
     <div class="sidebar-label">On this page</div>
     <a href="#context">Context</a>
@@ -142,7 +160,7 @@
         <p>I developed a new copy format that consistently covered all three elements using as few characters as possible — constraints that forced clarity.</p>
       </div>
       <div class="project-image">
-        <img src="images/viral-links.png" alt="The viral links redesign documentation" />
+        <img src="images/viral-links.png" alt="The viral links redesign documentation"  loading="lazy"/>
         <div class="image-caption">The viral links redesign documentation — an audit of existing touchpoints across email, landing pages, popups, and in-app surfaces, with the new format and evidence base.</div>
       </div>
       <div class="prose">

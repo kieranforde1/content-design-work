@@ -11,6 +11,7 @@
   <style>
     :root {
       --col-accent: #B07846;
+      --col-accent-light: #D4A56A;
       --col-primary: #1C2B3A;
       --col-cream: #F7F4EF;
       --col-neutral: #141414;
@@ -60,9 +61,9 @@
     .hero-inner { max-width: 860px; margin: 0 auto; }
     .hero-breadcrumb {
       font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--col-accent); margin-bottom: 20px;
+      text-transform: uppercase; color: var(--col-accent-light); margin-bottom: 20px;
     }
-    .breadcrumb-link { color: var(--col-accent); text-decoration: none; }
+    .breadcrumb-link { color: var(--col-accent-light); text-decoration: none; }
     .breadcrumb-link:hover { text-decoration: underline; }
     .hero-title {
       font-family: var(--font-serif);
@@ -104,7 +105,7 @@
       border-bottom: 1px solid rgba(28,43,58,0.1);
     }
     .sidebar a {
-      font-size: 13px; font-weight: 500; color: rgba(20,20,20,0.5);
+      font-size: 13px; font-weight: 500; color: rgba(20,20,20,0.65);
       text-decoration: none; padding: 5px 0;
       border-left: 2px solid transparent;
       padding-left: 10px;
@@ -121,7 +122,7 @@
 
     .section-eyebrow {
       font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--col-accent);
+      text-transform: uppercase; color: var(--col-primary);
       margin-bottom: 10px;
     }
     .section-title {
@@ -149,8 +150,8 @@
       margin: 28px 0;
     }
     .stat-card {
-      background: #fff; border-radius: 12px; padding: 24px 20px;
-      border-left: 4px solid var(--col-accent);
+      background: rgba(176,120,70,0.06); border-radius: 12px; padding: 24px 20px;
+      border: 1.5px solid rgba(176,120,70,0.18);
     }
     .stat-number {
       font-size: 32px; font-weight: 800; color: var(--col-primary);
@@ -213,7 +214,7 @@
     .layer {
       background: #fff; border-radius: 10px; padding: 18px 22px;
       display: flex; gap: 16px; align-items: flex-start;
-      border-left: 4px solid var(--layer-color, var(--col-primary));
+      border: 1.5px solid var(--layer-color, var(--col-primary));
     }
     .layer-num {
       font-size: 11px; font-weight: 800; letter-spacing: 0.05em;
@@ -239,12 +240,28 @@
       .page-body { padding: 48px 20px 80px; }
       .stat-row { grid-template-columns: 1fr 1fr; }
     }
+
+    :focus-visible {
+      outline: 2px solid var(--col-accent-light);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 16px;
+      background: var(--col-primary); color: #fff;
+      padding: 8px 16px; border-radius: 0 0 8px 8px;
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      z-index: 200;
+    }
+    .skip-link:focus { top: 0; }
   </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="Main">
   <div class="nav-logo">
     <a href="index.html" style="text-decoration: none;"><span style="font-family: var(--font-serif); font-style: italic; font-size: 20px; color: #fff; font-weight: 700;">Kieran Forde</span></a>
   </div>
@@ -262,24 +279,24 @@
     <h1 class="hero-title">Engineering rebuild on<br>HubSpot infrastructure.</h1>
     <p class="hero-subtitle">Translating the proof of concept into a rules-based, in-house checker that catches terminology issues directly in the engineering code review workflow.</p>
     <div class="hero-meta-row">
-      <div class="meta-item">
-        <span class="meta-label">Status</span>
-        <span class="meta-value">Active · In engineering build</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Timeline</span>
-        <span class="meta-value">2025–2026</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Engineering partners</span>
-        <span class="meta-value">three engineering partners</span>
-      </div>
+      <dl class="meta-item">
+        <dt class="meta-label">Status</dt>
+        <dd class="meta-value">Active · In engineering build</dd>
+      </dl>
+      <dl class="meta-item">
+        <dt class="meta-label">Timeline</dt>
+        <dd class="meta-value">2025–2026</dd>
+      </dl>
+      <dl class="meta-item">
+        <dt class="meta-label">Engineering partners</dt>
+        <dd class="meta-value">three engineering partners</dd>
+      </dl>
     </div>
   </div>
 </section>
 
 <!-- BODY -->
-<div class="page-body">
+<div class="page-body" id="main-content" tabindex="-1">
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
@@ -344,7 +361,7 @@
       </div>
 
       <div class="project-image" style="margin-top:24px;">
-        <img src="images/tc-latest-app.png" alt="The Terminology Checker showing 270,752 issues across HubSpot product areas">
+        <img src="images/tc-latest-app.png" alt="The Terminology Checker showing 270,752 issues across HubSpot product areas" loading="lazy">
         <p class="image-caption">The current version of the Terminology Checker — 270,752 issues identified and grouped by hub and platform layer across 47 product areas. Each area shows Fix, Caution, Review, and Document issue counts.</p>
       </div>
 

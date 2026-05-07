@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redesigning Statistical Bulletins — Kieran Forde</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --col-accent: #B07846;
+      --col-accent-light: #D4A56A;
+      --col-primary: #1C2B3A;
+      --col-cream: #F7F4EF;
+      --col-neutral: #141414;
+      --col-muted: #8FA8B5;
+      --col-lavender: #CEC1D8;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--col-cream);
+      color: var(--col-neutral);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--col-primary);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 60px;
+    }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-link {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--col-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: #fff; }
+    .nav-link.active { color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--col-primary);
+      padding: 72px 40px 100px;
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 60px; background: var(--col-cream);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .hero-breadcrumb {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--col-accent-light); margin-bottom: 20px;
+    }
+    .breadcrumb-link {
+      color: var(--col-accent-light); text-decoration: none;
+    }
+    .breadcrumb-link:hover { text-decoration: underline; }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 700; font-style: italic; color: #fff;
+      line-height: 1.1; margin-bottom: 20px;
+    }
+    .hero-subtitle {
+      font-size: 18px; font-weight: 500; color: rgba(255,255,255,0.75);
+      max-width: 580px; line-height: 1.6; margin-bottom: 40px;
+    }
+    .hero-meta-row { display: flex; gap: 32px; flex-wrap: wrap; }
+    .meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .meta-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--col-muted);
+    }
+    .meta-value { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); }
+
+    /* ── PAGE BODY ── */
+    .page-body {
+      max-width: 860px; margin: 0 auto;
+      padding: 72px 40px 120px;
+    }
+
+    /* ── SECTIONS ── */
+    .section { margin-bottom: 72px; }
+    .section:last-child { margin-bottom: 0; }
+
+    .section-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--col-primary);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 28px; font-weight: 700; font-style: italic;
+      color: var(--col-primary); line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .prose {
+      font-size: 15px; line-height: 1.75; color: rgba(20,20,20,0.8);
+    }
+    .prose p { margin-bottom: 16px; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { font-weight: 700; color: var(--col-neutral); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none; border-top: 1.5px solid rgba(28,43,58,0.1);
+      margin-bottom: 72px;
+    }
+
+    /* ── STAT CARDS ── */
+    .stat-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      margin: 28px 0;
+    }
+    .stat-card {
+      background: rgba(176,120,70,0.06); border-radius: 12px; padding: 24px 20px;
+      border: 1.5px solid rgba(176,120,70,0.18);
+    }
+    .stat-number {
+      font-size: 32px; font-weight: 800; color: var(--col-primary);
+      line-height: 1; margin-bottom: 6px;
+    }
+    .stat-desc {
+      font-size: 12px; font-weight: 500; line-height: 1.5;
+      color: rgba(20,20,20,0.70);
+    }
+
+    /* ── QUOTE BLOCK ── */
+    .quote-block {
+      padding: 20px 24px; margin: 24px 0;
+      background: rgba(176,120,70,0.04); border-radius: 12px;
+      border: 1.5px solid rgba(176,120,70,0.22);
+    }
+    .quote-text {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 16px; line-height: 1.6; color: var(--col-primary);
+      margin-bottom: 10px;
+    }
+    .quote-attribution {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(20,20,20,0.72);
+    }
+
+    /* ── IMAGE PLACEHOLDER ── */
+    .img-placeholder {
+      background: rgba(28,43,58,0.04);
+      border: 1.5px dashed rgba(28,43,58,0.18);
+      border-radius: 12px;
+      padding: 32px 24px;
+      margin: 24px 0;
+      text-align: center;
+    }
+    .img-placeholder-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(20,20,20,0.72);
+      margin-bottom: 6px;
+    }
+    .img-placeholder-caption {
+      font-size: 13px; color: rgba(20,20,20,0.72); line-height: 1.5;
+    }
+
+    /* ── TWO-COL ── */
+    .two-col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+      margin: 24px 0;
+    }
+    .two-col-item {}
+    .two-col-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--col-primary);
+      margin-bottom: 10px;
+    }
+    .two-col-body {
+      font-size: 14px; line-height: 1.7; color: rgba(20,20,20,0.75);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--col-neutral); padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-note { font-size: 12px; color: rgba(255,255,255,0.55); }
+
+    @media (max-width: 720px) {
+      nav, .hero { padding-left: 20px; padding-right: 20px; }
+      .page-body { padding: 48px 20px 80px; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--col-accent-light);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 16px;
+      background: var(--col-primary); color: #fff;
+      padding: 8px 16px; border-radius: 0 0 8px 8px;
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      z-index: 200;
+    }
+    .skip-link:focus { top: 0; }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <nav aria-label="Main">
+    <div class="nav-logo">
+      <a href="index.html" style="text-decoration: none;"><span style="font-family: var(--font-serif); font-style: italic; font-size: 20px; color: #fff; font-weight: 700;">Kieran Forde</span></a>
+    </div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Featured work</a>
+      <a href="past-work.html" class="nav-link">All HubSpot work</a>
+      <a href="earlier-work.html" class="nav-link active">Earlier work</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-breadcrumb">
+        <a href="earlier-work.html" class="breadcrumb-link">Earlier work</a>
+        &nbsp;/&nbsp; ONS
+      </p>
+      <h1 class="hero-title">Redesigning statistical bulletins.</h1>
+      <p class="hero-subtitle">ONS bulletins were long, structured around data sources, and not built for the people reading them. I ran the research to prove it, redesigned the format, and helped 100+ publishing teams adopt a new approach.</p>
+      <div class="hero-meta-row">
+        <dl class="meta-item">
+          <dt class="meta-label">Organisation</dt>
+          <dd class="meta-value">Office for National Statistics</dd>
+        </dl>
+        <dl class="meta-item">
+          <dt class="meta-label">Role</dt>
+          <dd class="meta-value">Senior Content Designer</dd>
+        </dl>
+        <dl class="meta-item">
+          <dt class="meta-label">Period</dt>
+          <dd class="meta-value">2018–19</dd>
+        </dl>
+        <dl class="meta-item">
+          <dt class="meta-label">Methods</dt>
+          <dd class="meta-value">Research · Content Design · Change Management</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE BODY -->
+  <div class="page-body" id="main-content" tabindex="-1">
+
+    <!-- OUTCOMES -->
+    <section class="section" aria-labelledby="outcomes-title">
+      <p class="section-eyebrow">Outcomes</p>
+      <h2 class="section-title" id="outcomes-title">Impact at scale.</h2>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-number">33%</div>
+          <div class="stat-desc">increase in page views across all bulletins</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">30%</div>
+          <div class="stat-desc">more content consumed per visit</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">80%</div>
+          <div class="stat-desc">user satisfaction score — up from baseline</div>
+        </div>
+      </div>
+      <div class="quote-block">
+        <p class="quote-text">"One of the biggest single improvements in a website's design ever. The new ONS bulletin format is extraordinary."</p>
+        <p class="quote-attribution">Tom Forth, Head of Data, ODI Leeds — via Twitter</p>
+      </div>
+      <div class="prose">
+        <p>The redesign was cited by the UK National Statistician in Parliament as an example of user-centred design improving access to public data.</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- THE PROBLEM -->
+    <section class="section" aria-labelledby="problem-title">
+      <p class="section-eyebrow">The problem</p>
+      <h2 class="section-title" id="problem-title">Bulletins built for producers, not readers.</h2>
+      <div class="prose">
+        <p>ONS statistical bulletins are the primary vehicle for publishing official UK statistics — from unemployment to house prices to population figures. When I joined the team, they were long, dense, and structured around the way ONS collected data rather than the way users wanted to consume it.</p>
+        <p>A bulletin on the UK labour market might open with a 400-word preamble about methodology before revealing any headline figure. Topics that were logically connected — employment rate and unemployment rate, for example — were separated into different sections because they came from different datasets.</p>
+        <p>The content structure had been inherited from printed reports. Nobody had ever asked whether it served readers.</p>
+      </div>
+
+      <div class="img-placeholder">
+        <p class="img-placeholder-label">Image: Old bulletin format</p>
+        <p class="img-placeholder-caption">Screenshot of a pre-redesign ONS statistical bulletin, showing the original data-source-led structure. <em>(From portfolio slide deck, slide 7)</em></p>
+      </div>
+
+      <div class="prose">
+        <p>I tagged paragraphs across a sample of bulletins by content type — methodology, headline figures, analysis, data downloads. The scatter was immediately obvious. The same types were spread throughout rather than grouped where users expected them.</p>
+      </div>
+
+      <div class="img-placeholder">
+        <p class="img-placeholder-label">Image: Colour-coding diagnostic</p>
+        <p class="img-placeholder-caption">Visualisation of content types across a typical bulletin using colour-coded paragraph tagging — showing methodology, analysis, and data sections interspersed throughout rather than grouped logically. <em>(Portfolio slide 8)</em></p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- DISCOVERY -->
+    <section class="section" aria-labelledby="discovery-title">
+      <p class="section-eyebrow">Discovery</p>
+      <h2 class="section-title" id="discovery-title">Understanding who reads bulletins and why.</h2>
+      <div class="prose">
+        <p>I led a full Discovery phase to understand how people actually used bulletins — running a site-wide survey, 14 in-depth user interviews, analytics reviews, heatmapping, and on-page polls across multiple bulletins.</p>
+      </div>
+      <div class="two-col">
+        <div class="two-col-item">
+          <p class="two-col-label">Research methods</p>
+          <div class="two-col-body">
+            <p>Site-wide survey (n=large), 14 user interviews across journalist, researcher, and public-sector roles, Google Analytics review, Hotjar heatmapping, and on-page polls deployed on live bulletins.</p>
+          </div>
+        </div>
+        <div class="two-col-item">
+          <p class="two-col-label">Key findings</p>
+          <div class="two-col-body">
+            <p>Users came to bulletins with one of three tasks: read the analysis, download the data, or understand the methodology. Almost nobody arrived wanting to read a bulletin cover-to-cover. Navigation between sections was the primary need — not linear reading.</p>
+          </div>
+        </div>
+      </div>
+      <div class="prose">
+        <p>Users consistently said they wanted bulletins organised by <strong>topic</strong> — not by data source. A headline figure about wages should sit next to the analysis about wages, not in a separate chapter because the wages data came from a different ONS survey than the employment data.</p>
+        <p>The research also surfaced a sharp disconnect: ONS publishing teams thought of bulletins as statistical reports. Users thought of them as news articles with supporting evidence. Both were valid framings — but the existing format served neither well.</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- DESIGN -->
+    <section class="section" aria-labelledby="design-title">
+      <p class="section-eyebrow">Design</p>
+      <h2 class="section-title" id="design-title">A new structure, built around user tasks.</h2>
+      <div class="prose">
+        <p>The findings pointed in one direction. I redesigned the bulletin format around the three tasks users actually came to complete:</p>
+        <ol style="padding-left: 24px; margin: 16px 0; font-size: 15px; line-height: 1.75; color: rgba(20,20,20,0.8);">
+          <li style="margin-bottom: 10px;"><strong>Analysis first</strong> — the headline figures and narrative, written for a general audience</li>
+          <li style="margin-bottom: 10px;"><strong>Data second</strong> — downloads and interactive charts, clearly signposted</li>
+          <li style="margin-bottom: 10px;"><strong>Methodology last</strong> — background for specialists, not buried at the start</li>
+        </ol>
+        <p>Within each section, content was organised by topic — not by dataset or survey. Related figures from different data sources were brought together.</p>
+      </div>
+
+      <div class="img-placeholder">
+        <p class="img-placeholder-label">Image: Bulletin structure guidance</p>
+        <p class="img-placeholder-caption">The new bulletin structure guidance table showing the recommended section order and content types for each zone, developed for distribution to publishing teams. <em>(Portfolio slide 10)</em></p>
+      </div>
+
+      <div class="prose">
+        <p>I also introduced a new content pattern: a <strong>warning callout</strong> for provisional or revised figures. Previously, caveats about data quality were buried in methodology sections. Users — particularly journalists working on deadline — frequently missed them and published incorrect figures. The new pattern surfaced caveats inline, adjacent to the figure they referred to.</p>
+      </div>
+
+      <div class="img-placeholder">
+        <p class="img-placeholder-label">Image: Warning content pattern</p>
+        <p class="img-placeholder-caption">The new warning callout component, shown in context within a bulletin. Used to flag provisional, revised, or methodologically caveated figures inline. <em>(Portfolio slide 11)</em></p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ROLLOUT -->
+    <section class="section" aria-labelledby="rollout-title">
+      <p class="section-eyebrow">Rollout</p>
+      <h2 class="section-title" id="rollout-title">Embedding change across 100+ teams.</h2>
+      <div class="prose">
+        <p>Redesigning the format was only half the challenge. ONS has over 100 publishing teams — each producing bulletins independently, led by statisticians without a design or content background. Getting them to adopt a new format required more than updated guidance.</p>
+        <p>I also overhauled Style.ONS (the ONS house style guide) and established an evidence-based governance process for style decisions, so future changes could be proposed, tested, and adopted systematically rather than by editorial fiat.</p>
+        <p>The internal rollout included a comms campaign — posters, a newsletter series, and team workshops — to explain the rationale behind each change and give teams confidence to apply the new format to their specific subject areas.</p>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"I used to think the way we structured bulletins was just how statistics had to be written. Now I realise we'd been writing for ourselves, not our users."</p>
+        <p class="quote-attribution">ONS statistician, post-workshop feedback</p>
+      </div>
+
+      <div class="prose">
+        <p>All 100+ ONS publishing teams adopted the new format. The gender pay gap bulletin was among the first — and teams across ONS started using it as a reference for their own restructures.</p>
+      </div>
+
+      <div class="img-placeholder">
+        <p class="img-placeholder-label">Image: Gender pay gap bulletin</p>
+        <p class="img-placeholder-caption">The gender pay gap bulletin, redesigned using the new structure. One of the first bulletins to adopt the new format and used as a reference example for other teams. <em>(Portfolio slide 13)</em></p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-note">Content Designer · kieranforde1@gmail.com</span>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Tools and Style.ONS — Kieran Forde</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --col-accent: #B07846;
+      --col-accent-light: #D4A56A;
+      --col-primary: #1C2B3A;
+      --col-cream: #F7F4EF;
+      --col-neutral: #141414;
+      --col-muted: #8FA8B5;
+      --col-lavender: #CEC1D8;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--col-cream);
+      color: var(--col-neutral);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--col-primary);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 60px;
+    }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-link {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--col-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: #fff; }
+    .nav-link.active { color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--col-primary);
+      padding: 72px 40px 100px;
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 60px; background: var(--col-cream);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .hero-breadcrumb {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--col-accent-light); margin-bottom: 20px;
+    }
+    .breadcrumb-link {
+      color: var(--col-accent-light); text-decoration: none;
+    }
+    .breadcrumb-link:hover { text-decoration: underline; }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 700; font-style: italic; color: #fff;
+      line-height: 1.1; margin-bottom: 20px;
+    }
+    .hero-subtitle {
+      font-size: 18px; font-weight: 500; color: rgba(255,255,255,0.75);
+      max-width: 580px; line-height: 1.6; margin-bottom: 40px;
+    }
+    .hero-meta-row { display: flex; gap: 32px; flex-wrap: wrap; }
+    .meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .meta-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--col-muted);
+    }
+    .meta-value { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); }
+
+    /* ── PAGE BODY ── */
+    .page-body {
+      max-width: 860px; margin: 0 auto;
+      padding: 72px 40px 120px;
+    }
+
+    /* ── SECTIONS ── */
+    .section { margin-bottom: 72px; }
+    .section:last-child { margin-bottom: 0; }
+
+    .section-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--col-primary);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 28px; font-weight: 700; font-style: italic;
+      color: var(--col-primary); line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .prose {
+      font-size: 15px; line-height: 1.75; color: rgba(20,20,20,0.8);
+    }
+    .prose p { margin-bottom: 16px; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { font-weight: 700; color: var(--col-neutral); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none; border-top: 1.5px solid rgba(28,43,58,0.1);
+      margin-bottom: 72px;
+    }
+
+    /* ── QUOTE BLOCK ── */
+    .quote-block {
+      padding: 20px 24px; margin: 24px 0;
+      background: rgba(176,120,70,0.04); border-radius: 12px;
+      border: 1.5px solid rgba(176,120,70,0.22);
+    }
+    .quote-text {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 16px; line-height: 1.6; color: var(--col-primary);
+      margin-bottom: 10px;
+    }
+    .quote-attribution {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(20,20,20,0.72);
+    }
+
+    /* ── IMAGE PLACEHOLDER ── */
+    .img-placeholder {
+      background: rgba(28,43,58,0.04);
+      border: 1.5px dashed rgba(28,43,58,0.18);
+      border-radius: 12px;
+      padding: 32px 24px;
+      margin: 24px 0;
+      text-align: center;
+    }
+    .img-placeholder-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(20,20,20,0.72);
+      margin-bottom: 6px;
+    }
+    .img-placeholder-caption {
+      font-size: 13px; color: rgba(20,20,20,0.72); line-height: 1.5;
+    }
+
+    /* ── TWO-COL ── */
+    .two-col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+      margin: 24px 0;
+    }
+    .two-col-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--col-primary);
+      margin-bottom: 10px;
+    }
+    .two-col-body {
+      font-size: 14px; line-height: 1.7; color: rgba(20,20,20,0.75);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--col-neutral); padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-note { font-size: 12px; color: rgba(255,255,255,0.55); }
+
+    @media (max-width: 720px) {
+      nav, .hero { padding-left: 20px; padding-right: 20px; }
+      .page-body { padding: 48px 20px 80px; }
+      .two-col { grid-template-columns: 1fr; }
+      footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--col-accent-light);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 16px;
+      background: var(--col-primary); color: #fff;
+      padding: 8px 16px; border-radius: 0 0 8px 8px;
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      z-index: 200;
+    }
+    .skip-link:focus { top: 0; }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <nav aria-label="Main">
+    <div class="nav-logo">
+      <a href="index.html" style="text-decoration: none;"><span style="font-family: var(--font-serif); font-style: italic; font-size: 20px; color: #fff; font-weight: 700;">Kieran Forde</span></a>
+    </div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Featured work</a>
+      <a href="past-work.html" class="nav-link">All HubSpot work</a>
+      <a href="earlier-work.html" class="nav-link active">Earlier work</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-breadcrumb">
+        <a href="earlier-work.html" class="breadcrumb-link">Earlier work</a>
+        &nbsp;/&nbsp; ONS
+      </p>
+      <h1 class="hero-title">Data tools and Style.ONS.</h1>
+      <p class="hero-subtitle">ONS publishing teams were making content decisions in the dark — no access to analytics, no updated style guidance, no consistent process. I fixed all three.</p>
+      <div class="hero-meta-row">
+        <dl class="meta-item">
+          <dt class="meta-label">Organisation</dt>
+          <dd class="meta-value">Office for National Statistics</dd>
+        </dl>
+        <dl class="meta-item">
+          <dt class="meta-label">Role</dt>
+          <dd class="meta-value">Senior Content Designer</dd>
+        </dl>
+        <dl class="meta-item">
+          <dt class="meta-label">Period</dt>
+          <dd class="meta-value">2018–20</dd>
+        </dl>
+        <dl class="meta-item">
+          <dt class="meta-label">Methods</dt>
+          <dd class="meta-value">Data · Content Systems · Internal Comms</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE BODY -->
+  <div class="page-body" id="main-content" tabindex="-1">
+
+    <!-- THE PROBLEM -->
+    <section class="section" aria-labelledby="problem-title">
+      <p class="section-eyebrow">The problem</p>
+      <h2 class="section-title" id="problem-title">Writing without knowing who you're writing for.</h2>
+      <div class="prose">
+        <p>ONS statistical content is written by statisticians — highly expert in their subject, but typically without a background in digital content or analytics. When I arrived, most publishing teams had no way of knowing how their pages were performing. Pageviews, bounce rates, and search terms were locked inside a central analytics function that teams had to request access to through a formal process.</p>
+        <p>The result: teams made content decisions based on intuition and tradition rather than evidence. Pages that nobody read were maintained at the same cost as high-traffic pages. Search terms that signalled user confusion went unnoticed.</p>
+        <p>The style guide situation was equally fragmented. Style.ONS — the ONS house style guide — existed but hadn't been overhauled in years. There was no process for proposing or evidencing style changes. Different teams had developed their own local conventions.</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- DATA TOOLS -->
+    <section class="section" aria-labelledby="data-title">
+      <p class="section-eyebrow">Self-service analytics</p>
+      <h2 class="section-title" id="data-title">A dashboard for every team.</h2>
+      <div class="prose">
+        <p>I built a self-service analytics dashboard in Google Data Studio, giving every ONS publishing team direct access to data about their own pages — without needing to request it from a central team or know how to use Google Analytics directly.</p>
+        <p>The dashboard combined standard metrics (pageviews, bounce rate, session duration) with content-specific signals that were more actionable for teams without an analytics background: top search terms for each section, most-clicked headings, and entry and exit pages.</p>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <p class="two-col-label">Standard metrics included</p>
+          <div class="two-col-body">
+            <p>Pageviews, unique pageviews, average session duration, bounce rate, new vs returning visitors — filterable by page, section, or time period.</p>
+          </div>
+        </div>
+        <div>
+          <p class="two-col-label">Content-specific signals added</p>
+          <div class="two-col-body">
+            <p>Top search terms per section, most-clicked headings (indicating what users were scanning for), entry pages (showing where traffic arrived from), and exit pages (showing where users left).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="img-placeholder">
+        <p class="img-placeholder-label">Image: Google Data Studio dashboard</p>
+        <p class="img-placeholder-caption">The self-service analytics dashboard built in Google Data Studio, showing the content-specific signals alongside standard metrics. Deployed for every ONS publishing team. <em>(Portfolio slide 27)</em></p>
+      </div>
+
+      <div class="prose">
+        <p>The dashboard was designed to be used by statisticians, not analysts. Every metric was labelled in plain English, with a short explanation of what it meant and what action it might suggest. The aim was to reduce the gap between data and decision — not just give teams numbers, but help them know what to do with them.</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- STYLE.ONS -->
+    <section class="section" aria-labelledby="style-title">
+      <p class="section-eyebrow">Style.ONS</p>
+      <h2 class="section-title" id="style-title">Evidence-based governance for the house style guide.</h2>
+      <div class="prose">
+        <p>Style.ONS is the ONS house style guide — the reference document that sets standards for language, terminology, and formatting across all ONS publications. I led a full overhaul of the guide, working through it section by section to update outdated conventions, fill gaps, and bring it in line with the bulletin redesign work.</p>
+        <p>But the more important change was structural: I established a formal governance process for how style decisions were made going forward. Previously, style changes were made informally by whoever had the access and inclination. The new process required any proposed change to be accompanied by user research evidence or a clear rationale, reviewed by a small editorial panel, and communicated to all teams before taking effect.</p>
+      </div>
+
+      <div class="img-placeholder">
+        <p class="img-placeholder-label">Image: Style.ONS website</p>
+        <p class="img-placeholder-caption">The updated Style.ONS website, showing the restructured navigation and refreshed content. <em>(Portfolio slide 28)</em></p>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"Before, when I had a style question I'd just ask whoever was nearest. Now I know where to look, and I can trust that what I find is up to date."</p>
+        <p class="quote-attribution">ONS statistician, adoption survey</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- INTERNAL COMMS -->
+    <section class="section" aria-labelledby="comms-title">
+      <p class="section-eyebrow">Internal comms</p>
+      <h2 class="section-title" id="comms-title">Making change stick.</h2>
+      <div class="prose">
+        <p>Rolling out both a new analytics tool and a revised style guide to over 100 teams required more than sending an email. I ran an internal comms campaign that spanned posters in shared spaces across ONS offices, a newsletter series targeted at team leads, and drop-in sessions where teams could ask questions and try the dashboard with their own data.</p>
+        <p>The approach was adapted from the bulletin redesign rollout — which had taught me that statisticians adopt new ways of working when they understand the rationale, not just the rule. Both campaigns led with the "why": here's what we learned from users, here's what wasn't working, here's what changes and here's why it's better.</p>
+      </div>
+
+      <div class="img-placeholder">
+        <p class="img-placeholder-label">Image: Internal comms poster</p>
+        <p class="img-placeholder-caption">One of the internal comms posters used to promote the new analytics dashboard and Style.ONS changes across ONS offices. <em>(Portfolio slide 30)</em></p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-note">Content Designer · kieranforde1@gmail.com</span>
+  </footer>
+
+</body>
+</html>

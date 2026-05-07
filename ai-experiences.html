@@ -11,6 +11,7 @@
   <style>
     :root {
       --col-accent: #B07846;
+      --col-accent-light: #D4A56A;
       --col-primary: #1C2B3A;
       --col-cream: #F7F4EF;
       --col-neutral: #141414;
@@ -58,7 +59,7 @@
     .hero-inner { max-width: 860px; margin: 0 auto; }
     .hero-breadcrumb {
       font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--col-accent); margin-bottom: 20px;
+      text-transform: uppercase; color: var(--col-accent-light); margin-bottom: 20px;
     }
     .hero-title {
       font-family: var(--font-serif);
@@ -98,7 +99,7 @@
       border-bottom: 1px solid rgba(28,43,58,0.1);
     }
     .sidebar a {
-      font-size: 13px; font-weight: 500; color: rgba(20,20,20,0.5);
+      font-size: 13px; font-weight: 500; color: rgba(20,20,20,0.65);
       text-decoration: none; padding: 5px 0;
       border-left: 2px solid transparent;
       padding-left: 10px;
@@ -113,7 +114,7 @@
 
     .section-eyebrow {
       font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--col-accent);
+      text-transform: uppercase; color: var(--col-primary);
       margin-bottom: 10px;
     }
     .section-title {
@@ -141,8 +142,8 @@
       margin: 28px 0;
     }
     .stat-card {
-      background: #fff; border-radius: 12px; padding: 24px 20px;
-      border-left: 4px solid var(--col-accent);
+      background: rgba(176,120,70,0.06); border-radius: 12px; padding: 24px 20px;
+      border: 1.5px solid rgba(176,120,70,0.18);
     }
     .stat-number {
       font-size: 32px; font-weight: 800; color: var(--col-primary);
@@ -154,9 +155,9 @@
     }
 
     .quote-block {
-      border-left: 4px solid var(--col-accent);
       padding: 20px 24px; margin: 24px 0;
-      background: #fff; border-radius: 0 12px 12px 0;
+      background: rgba(176,120,70,0.04); border-radius: 12px;
+      border: 1.5px solid rgba(176,120,70,0.22);
     }
     .quote-text {
       font-family: var(--font-serif); font-style: italic;
@@ -165,7 +166,7 @@
     }
     .quote-attribution {
       font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: rgba(20,20,20,0.45);
+      text-transform: uppercase; color: rgba(20,20,20,0.72);
     }
 
     .needs-input {
@@ -204,11 +205,27 @@
       .page-body { padding: 48px 20px 80px; }
       .stat-row { grid-template-columns: 1fr 1fr; }
     }
+
+    :focus-visible {
+      outline: 2px solid var(--col-accent-light);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 16px;
+      background: var(--col-primary); color: #fff;
+      padding: 8px 16px; border-radius: 0 0 8px 8px;
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      z-index: 200;
+    }
+    .skip-link:focus { top: 0; }
   </style>
 </head>
 <body>
 
-<nav>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav aria-label="Main">
   <div class="nav-logo">
     <a href="index.html" style="text-decoration: none;"><span style="font-family: var(--font-serif); font-style: italic; font-size: 20px; color: #fff; font-weight: 700;">Kieran Forde</span></a>
   </div>
@@ -225,27 +242,27 @@
     <h1 class="hero-title">AI Agents — Agent Builder<br>and Breeze Studio</h1>
     <p class="hero-subtitle">Content design lead for HubSpot's Agent Builder and Custom Assistant, launched at INBOUND 2025.</p>
     <div class="hero-meta-row">
-      <div class="meta-item">
-        <span class="meta-label">Status</span>
-        <span class="meta-value">Complete</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Timeline</span>
-        <span class="meta-value">2025</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Team</span>
-        <span class="meta-value">AI Agents</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Performance rating</span>
-        <span class="meta-value">Exceeds expectations</span>
-      </div>
+      <dl class="meta-item">
+        <dt class="meta-label">Status</dt>
+        <dd class="meta-value">Complete</dd>
+      </dl>
+      <dl class="meta-item">
+        <dt class="meta-label">Timeline</dt>
+        <dd class="meta-value">2025</dd>
+      </dl>
+      <dl class="meta-item">
+        <dt class="meta-label">Team</dt>
+        <dd class="meta-value">AI Agents</dd>
+      </dl>
+      <dl class="meta-item">
+        <dt class="meta-label">Performance rating</dt>
+        <dd class="meta-value">Exceeds expectations</dd>
+      </dl>
     </div>
   </div>
 </section>
 
-<div class="page-body">
+<div class="page-body" id="main-content" tabindex="-1">
 
   <aside class="sidebar">
     <p class="sidebar-label">On this page</p>
@@ -294,7 +311,7 @@
       </div>
 
       <div class="project-image">
-        <img src="images/agents-concept-map.png" alt="Concept mapping document showing Agent and Skill definitions, aspects, and related metadata">
+        <img src="images/agents-concept-map.png" alt="Concept mapping document showing Agent and Skill definitions, aspects, and related metadata" loading="lazy">
         <p class="image-caption">The concept definition document — mapping Agent and Skill concepts with their definitions, aspects (triggers, permissions, run statuses), and related metadata across the agent experience.</p>
       </div>
 
@@ -308,7 +325,7 @@
       </div>
 
       <div class="project-image">
-        <img src="images/agents-marketplace.png" alt="The Breeze Agents section of the HubSpot Marketplace showing agent listings">
+        <img src="images/agents-marketplace.png" alt="The Breeze Agents section of the HubSpot Marketplace showing agent listings" loading="lazy">
         <p class="image-caption">The Breeze Agents section of the HubSpot Marketplace at launch — a new surface whose naming, copy, and positioning I helped define.</p>
       </div>
 
@@ -339,7 +356,7 @@
       </div>
 
       <div class="project-image">
-        <img src="images/agents-info-matrix.png" alt="The Agents User Journey Information Matrix alongside before/after agent builder content updates">
+        <img src="images/agents-info-matrix.png" alt="The Agents User Journey Information Matrix alongside before/after agent builder content updates" loading="lazy">
         <p class="image-caption">The Agents User Journey Information Matrix (top) — covering steps 4, 5, and 6 of the journey. Below: before/after agent builder content updates showing how the matrix translated into concrete copy changes.</p>
       </div>
     </section>
@@ -361,17 +378,17 @@
 
       <div class="image-grid">
         <div class="project-image">
-          <img src="images/agents-portal-pct.png" alt="Bar chart showing % of Pro+ Portals using Agents/Assistants per week">
+          <img src="images/agents-portal-pct.png" alt="Bar chart showing % of Pro+ Portals using Agents/Assistants per week" loading="lazy">
           <p class="image-caption">% of Pro+ portals using Agents/Assistants per week — growing steadily post-INBOUND launch, with an EOY target of 10% and Spring Spotlight 2026 target of 20%.</p>
         </div>
         <div class="project-image">
-          <img src="images/agents-portals-line.png" alt="Line chart showing portals using Breeze Agents or Custom Assistants over time">
+          <img src="images/agents-portals-line.png" alt="Line chart showing portals using Breeze Agents or Custom Assistants over time" loading="lazy">
           <p class="image-caption">Weekly active portals using Breeze Agents (orange) and Custom Assistants (teal) — steep growth curve post-INBOUND launch.</p>
         </div>
       </div>
 
       <div class="project-image">
-        <img src="images/agents-tool-usage.png" alt="Chart showing unique AI skills used by agents over time and top agent skills since INBOUND">
+        <img src="images/agents-tool-usage.png" alt="Chart showing unique AI skills used by agents over time and top agent skills since INBOUND" loading="lazy">
         <p class="image-caption">Tool usage data post-launch — unique AI skills used by agents grew 5× over the launch period. Top skills included company research, web search, and calendar generation, with thousands of successful executions.</p>
       </div>
     </section>

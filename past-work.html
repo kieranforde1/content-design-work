@@ -11,6 +11,7 @@
   <style>
     :root {
       --col-accent: #B07846;
+      --col-accent-light: #D4A56A;
       --col-primary: #1C2B3A;
       --col-cream: #F7F4EF;
       --col-neutral: #141414;
@@ -86,7 +87,7 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--col-accent);
+      color: var(--col-accent-light);
       margin-bottom: 20px;
     }
 
@@ -130,7 +131,7 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--col-accent);
+      color: var(--col-primary);
     }
 
     .section-count {
@@ -157,26 +158,15 @@
       align-items: start;
       gap: 16px;
       transition: transform 0.18s ease, box-shadow 0.18s ease;
-      border: 1.5px solid transparent;
+      border: 1.5px solid rgba(28,43,58,0.08);
       position: relative;
       overflow: hidden;
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: var(--accent, var(--col-primary));
-      border-radius: 12px 0 0 12px;
     }
 
     .project-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 32px rgba(28,43,58,0.10);
-      border-color: rgba(28,43,58,0.08);
+      border-color: rgba(28,43,58,0.18);
     }
 
     .project-left { display: flex; flex-direction: column; gap: 10px; }
@@ -298,12 +288,28 @@
       .project-card:hover { transform: none; box-shadow: none; }
       .project-card:hover .project-arrow { transform: none; }
     }
+
+    :focus-visible {
+      outline: 2px solid var(--col-accent-light);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 16px;
+      background: var(--col-primary); color: #fff;
+      padding: 8px 16px; border-radius: 0 0 8px 8px;
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      z-index: 200;
+    }
+    .skip-link:focus { top: 0; }
   </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- NAV -->
-  <nav>
+  <nav aria-label="Main">
     <div class="nav-logo">
     <a href="index.html" style="text-decoration: none;"><span style="font-family: var(--font-serif); font-style: italic; font-size: 20px; color: #fff; font-weight: 700;">Kieran Forde</span></a>
   </div>
@@ -324,7 +330,7 @@
   </section>
 
   <!-- MAIN -->
-  <main>
+  <main id="main-content" tabindex="-1">
 
     <div class="section-header">
       <span class="section-label">Completed projects</span>
@@ -333,14 +339,14 @@
 
     <div class="projects">
 
-      <a href="ai-experiences.html" class="project-card" style="--accent: #1C2B3A;">
+      <a href="ai-experiences.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-complete">Complete</span>
             <span class="tag">AI UX</span>
             <span class="tag">Lead</span>
           </div>
-          <div class="project-title">AI Agents — Agent Builder and Breeze Studio</div>
+          <h2 class="project-title">AI Agents — Agent Builder and Breeze Studio</h2>
           <div class="project-summary">Content design lead for HubSpot's Agent Builder and Custom Assistant, launched at HubSpot's annual INBOUND conference (2025). Defined naming conventions, core concepts, and navigation structure for the agent experience. After launch, the number of distinct tools customers built with grew 5×.</div>
           <div class="project-pills">
             <span class="pill">AI Content</span>
@@ -354,14 +360,14 @@
         </div>
       </a>
 
-      <a href="use-cases.html" class="project-card" style="--accent: #B07846;">
+      <a href="use-cases.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-complete">Complete</span>
             <span class="tag">Growth</span>
             <span class="tag">Copy Systems</span>
           </div>
-          <div class="project-title">Use Cases Content Framework</div>
+          <h2 class="project-title">Use Cases Content Framework</h2>
           <div class="project-summary">Content framework for HubSpot's use cases across the free and entry-level paid plans. Produced 120 approved copy variations. Results: 9,000 more users moved from free to paid; self-serve purchase rate up 209%.</div>
           <div class="project-pills">
             <span class="pill">Copy Systems</span>
@@ -374,14 +380,14 @@
         </div>
       </a>
 
-      <a href="microapps-design-system.html" class="project-card" style="--accent: #B9CDBE;">
+      <a href="microapps-design-system.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-complete">Complete</span>
             <span class="tag">Design Systems</span>
             <span class="tag">Growth</span>
           </div>
-          <div class="project-title">Microapps Design System — Product Bridges</div>
+          <h2 class="project-title">Microapps Design System — Product Bridges</h2>
           <div class="project-summary">A design system for moving users of HubSpot's free standalone tools into the main product — principles, component guidance, and content patterns. Signups via those tools grew from 7.3% to 21.5% between July and December 2024.</div>
           <div class="project-pills">
             <span class="pill">Design Systems</span>
@@ -394,14 +400,14 @@
         </div>
       </a>
 
-      <a href="trellis-design-docs.html" class="project-card" style="--accent: #1C2B3A;">
+      <a href="trellis-design-docs.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-complete">Complete</span>
             <span class="tag">Design Systems</span>
             <span class="tag">Documentation</span>
           </div>
-          <div class="project-title">Trellis Design Docs</div>
+          <h2 class="project-title">Trellis Design Docs</h2>
           <div class="project-summary">Rewrote HubSpot's design systems documentation for the Trellis docs site launch, consolidating guidance previously split across multiple internal tools. Homepage: 5,358 views; content guidelines page: 2,206 views. Won HubSpot's Craft with Care design quality award, Q1 2025.</div>
           <div class="project-pills">
             <span class="pill">Design Systems</span>
@@ -414,14 +420,14 @@
         </div>
       </a>
 
-      <a href="microapp-naming.html" class="project-card" style="--accent: #B07846;">
+      <a href="microapp-naming.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-complete">Complete</span>
             <span class="tag">Microapps</span>
             <span class="tag">Naming</span>
           </div>
-          <div class="project-title">Microapp Naming and Build</div>
+          <h2 class="project-title">Microapp Naming and Build</h2>
           <div class="project-summary">Content design for four of HubSpot's free standalone tools — Campaign Assistant, Guide Creator, Blog Ideas Generator, Clip Creator. Led the naming process for Guide Creator; Marketing adopted it as their standard approach. Campaign Assistant was the headline announcement at HubSpot's INBOUND conference (2023), with 3,000+ signups in its first three months.</div>
           <div class="project-pills">
             <span class="pill">Naming</span>
@@ -434,14 +440,14 @@
         </div>
       </a>
 
-      <a href="email-signature-generator.html" class="project-card" style="--accent: #2A6B72;">
+      <a href="email-signature-generator.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-complete">Complete</span>
             <span class="tag">Growth</span>
             <span class="tag">Conversion</span>
           </div>
-          <div class="project-title">Email Signature Generator — Conversion</div>
+          <h2 class="project-title">Email Signature Generator — Conversion</h2>
           <div class="project-summary">Added sign-up prompts to HubSpot's most-visited free tool. Monthly signups grew from 468 to 6,452.</div>
           <div class="project-pills">
             <span class="pill">Conversion</span>
@@ -454,14 +460,14 @@
         </div>
       </a>
 
-      <a href="viral-links.html" class="project-card" style="--accent: #B9CDBE;">
+      <a href="viral-links.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-complete">Complete</span>
             <span class="tag">Growth</span>
             <span class="tag">Conversion</span>
           </div>
-          <div class="project-title">Viral Links — Copy Redesign</div>
+          <h2 class="project-title">Viral Links — Copy Redesign</h2>
           <div class="project-summary">Redesigned viral link copy across HubSpot to consistently explain features, benefits, and cost. Three live experiments: 42,000 more signups initiated, 500 more completed.</div>
           <div class="project-pills">
             <span class="pill">Copy</span>
@@ -474,14 +480,14 @@
         </div>
       </a>
 
-      <a href="forms-empty-states.html" class="project-card" style="--accent: #1C2B3A;">
+      <a href="forms-empty-states.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-complete">Complete</span>
             <span class="tag">Onboarding</span>
             <span class="tag">Patterns</span>
           </div>
-          <div class="project-title">Forms and Deals — Empty States and Guided Tours</div>
+          <h2 class="project-title">Forms and Deals — Empty States and Guided Tours</h2>
           <div class="project-summary">Empty states and guided tours to drive feature adoption. 14% increase in forms usage, 5.5% increase in activation across the entry-level plan. When applied to Reporting: guided tour usage up 22 percentage points, 78% completion rate.</div>
           <div class="project-pills">
             <span class="pill">Onboarding</span>
@@ -494,14 +500,14 @@
         </div>
       </a>
 
-      <a href="get-started-heart.html" class="project-card" style="--accent: #B07846;">
+      <a href="get-started-heart.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-complete">Complete</span>
             <span class="tag">Onboarding</span>
             <span class="tag">Strategy</span>
           </div>
-          <div class="project-title">Get Started with HEART — Signup Redesign</div>
+          <h2 class="project-title">Get Started with HEART — Signup Redesign</h2>
           <div class="project-summary">Co-led content design for a multi-quarter signup redesign. Defined the vision and principles. Early experiments: 25% increase in users completing setup, 52% increase in paid conversions.</div>
           <div class="project-pills">
             <span class="pill">Strategy</span>
@@ -514,14 +520,14 @@
         </div>
       </a>
 
-      <a href="help-in-nav.html" class="project-card" style="--accent: #2A6B72;">
+      <a href="help-in-nav.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-complete">Complete</span>
             <span class="tag">Onboarding</span>
             <span class="tag">IA</span>
           </div>
-          <div class="project-title">Help in the Nav</div>
+          <h2 class="project-title">Help in the Nav</h2>
           <div class="project-summary">Redesigned the help panel for free and entry-level users with step-by-step guidance drawn from support articles. Result: 22.96% increase in users resolving issues without contacting support, 26.65% decrease in support tickets.</div>
           <div class="project-pills">
             <span class="pill">IA</span>
@@ -534,14 +540,14 @@
         </div>
       </a>
 
-      <a href="hubspot-for-startups.html" class="project-card" style="--accent: #B9CDBE;">
+      <a href="hubspot-for-startups.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-complete">Complete</span>
             <span class="tag">Growth</span>
             <span class="tag">Conversion</span>
           </div>
-          <div class="project-title">HubSpot for Startups — Signup Flow</div>
+          <h2 class="project-title">HubSpot for Startups — Signup Flow</h2>
           <div class="project-summary">Redesigned the pricing and signup flow for HubSpot's startup discount program to clarify the free option and add post-signup upsells. Average increase of $16,450 in first-time purchases per month (~$200k annually).</div>
           <div class="project-pills">
             <span class="pill">Conversion</span>
@@ -554,14 +560,14 @@
         </div>
       </a>
 
-      <a href="wordpress-demo.html" class="project-card" style="--accent: #1C2B3A;">
+      <a href="wordpress-demo.html" class="project-card">
         <div class="project-left">
           <div class="project-tag-row">
             <span class="tag status-complete">Complete</span>
             <span class="tag">Onboarding</span>
             <span class="tag">Copy</span>
           </div>
-          <div class="project-title">WordPress Demo Improvements</div>
+          <h2 class="project-title">WordPress Demo Improvements</h2>
           <div class="project-summary">Replaced a fictional narrative in the WordPress plugin demo with feature-focused content ordered by most valuable features first. 12.9% more demo completions; users 24.3% more likely to sign up for HubSpot after completing.</div>
           <div class="project-pills">
             <span class="pill">Copy</span>
